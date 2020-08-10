@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "command": "npm run crawl",
+      "name": "Run npm start",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}
