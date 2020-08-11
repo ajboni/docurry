@@ -1,7 +1,12 @@
-// Example of project-name.scss
 // Define variables to override default ones
-$primary-color: #2e5bec;
-$dark-color: #3e396b;
+
+/* Override variables and styles below */
+/* List of variables: https://picturepan2.github.io/spectre/getting-started/custom.html#variables */
+
+// $primary-color: #2e5bec;
+// $dark-color: #3e396b;
+
+/* End of customization, do not edit below. */
 
 // Import full Spectre source code
 @import "node_modules/spectre.css/src/spectre";
