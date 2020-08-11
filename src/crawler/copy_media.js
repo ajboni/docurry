@@ -26,7 +26,7 @@ exports.copyMedia = () => {
 
   //   console.log(columnify(new Array(filesCopied)));
   fse.copySync(srcPath, dstPath, { recursive: true, filter: filterFunction });
-  logStatus(columnify(filesCopied));
+  logStatus(columnify(filesCopied) + "\n");
 
-  logOK(`\n[OK] ${filesCopied.length} files copied`);
+  logOK(`${filesCopied.length} files copied`);
 };

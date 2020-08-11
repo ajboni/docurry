@@ -28,6 +28,6 @@ exports.config = {
   /* Autogenerate sidebar content for documents */
   AUTO_GENERATE_SIDEBAR: true,
 
-  /* If 'auto', autogenerate background options using trianglify (your site must be GPL-3) otherwise specify path for image */
+  /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
 };

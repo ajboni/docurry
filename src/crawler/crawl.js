@@ -5,6 +5,8 @@ const { copyMedia } = require("./copy_media");
 const { makeLandingPage } = require("./make_landing_page");
 const { logTitle } = require("../utils/log");
 const { timeElpasedInSeconds } = require("../utils/date_utils");
+const { makeStyles } = require("./make_styles");
+const { ensureDirSync } = require("fs-extra");
 const { BUILD_FOLDER } = config;
 
 exports.crawl = function () {
@@ -13,8 +15,15 @@ exports.crawl = function () {
   rmdirSync(BUILD_FOLDER, { recursive: true });
   mkdirSync(BUILD_FOLDER);
 
+  /* Create necesary folders */
+  ensureDirSync(path.join(config.BUILD_FOLDER, "css"));
+  ensureDirSync(path.join(config.BUILD_FOLDER, "js"));
+
   /* Copy Media Files */
   copyMedia();
+
+  /* Generate Styles */
+  makeStyles();
 
   /* Process Landing Page*/
   makeLandingPage();

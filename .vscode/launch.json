@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "command": "npm run crawl",
+      "command": "npm run build",
       "name": "Run npm start",
       "request": "launch",
       "type": "node-terminal"
