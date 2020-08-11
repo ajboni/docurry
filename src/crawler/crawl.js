@@ -7,17 +7,14 @@ const { logTitle } = require("../utils/log");
 const { timeElpasedInSeconds } = require("../utils/date_utils");
 const { makeStyles } = require("./make_styles");
 const { ensureDirSync } = require("fs-extra");
+const { initBuildFolder } = require("./init_build_folder");
 const { BUILD_FOLDER } = config;
 
 exports.crawl = function () {
-  /* Clean Up */
   const startTime = new Date();
-  rmdirSync(BUILD_FOLDER, { recursive: true });
-  mkdirSync(BUILD_FOLDER);
 
-  /* Create necesary folders */
-  ensureDirSync(path.join(config.BUILD_FOLDER, "css"));
-  ensureDirSync(path.join(config.BUILD_FOLDER, "js"));
+  /* Clean Up */
+  initBuildFolder();
 
   /* Copy Media Files */
   copyMedia();

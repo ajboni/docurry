@@ -1,5 +1,3 @@
-# Customizing website
-
 ## Default Styles
 
 To customize how the website look, you can modify `src/client/style.scss`.

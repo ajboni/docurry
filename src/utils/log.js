@@ -9,6 +9,11 @@ exports.logOK = (msg) => {
 exports.logError = (msg) => {
   console.log(chalk.red`[ERROR] ${msg}`);
 };
+
+exports.logBg = (msg) => {
+  console.log(chalk.hex("#f29312")`[BACKGROUND] ${msg}`);
+};
+
 exports.logWarning = (msg) => {};
 exports.logTitle = (msg) => {
   console.log(chalk.bold.whiteBright`\n-------- ${msg} -------- \n`);

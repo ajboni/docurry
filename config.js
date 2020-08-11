@@ -1,7 +1,9 @@
 exports.config = {
   /* Project Name and logo on the navbar. */
   PROJECT_NAME: "Docurry",
-  PROJECT_LOGO: "book.svg",
+  PROJECT_DESCRIPTION: "A spicy static documentation site generator.",
+  PROJECT_LOGO: "./content/media/img/logo.png",
+  FAVICON: "./content/media/img/logo.png",
 
   /* Folder where src docs are located. */
   CONTENT_FOLDER: "./content",
