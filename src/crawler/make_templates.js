@@ -2,66 +2,44 @@ const fs = require("fs");
 const favicons = require("favicons");
 const { config } = require("../../config");
 const path = require("path");
-const { join } = require("path");
 const { logTitle, logOK, logError, logBg } = require("../utils/log");
-const { getRandomInt } = require("../utils/math_utils");
-const trianglify = require("trianglify");
 const { copySync, ensureDirSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
 const pretty = require("pretty");
 
-async function makeLandingPage() {
-  logTitle("Generate Landing Page");
-  makeLandingPageBackground();
+async function makeTemplates() {
+  logTitle("Generate Base Templates");
+  ensureDirSync(".temp");
 
-  /* Create the HTML dom object */
-  const templateHTML = fs.readFileSync(
-    path.join("src", "client", "index.html"),
-    { encoding: "utf-8" }
-  );
+  /* Base templates to be generated */
+  const templates = [
+    {
+      name: "_landing_page.html",
+      path: path.join("src", "client", "_landing_page.html"),
+    },
+    { name: "_docs.html", path: path.join("src", "client", "_docs.html") },
+  ];
 
+  /* Generates Favicons */
   const faviconsData = await makeFavicons();
 
-  let dom = new JSDOM(templateHTML);
-  let head = dom.window.document.createElement("div");
-  head.innerHTML = faviconsData.html;
+  templates.forEach((template) => {
+    const content = fs.readFileSync(template.path, { encoding: "utf-8" });
+    let dom = new JSDOM(content);
 
-  dom.window.document.head.appendChild(head);
+    /* Add Favicon paths to html */
+    dom.window.document.head.insertAdjacentHTML(
+      "beforeend",
+      faviconsData.html.join("")
+    );
+    const prettyHTML = pretty(dom.serialize());
+    fs.writeFileSync(path.join(".temp", template.name), prettyHTML);
+  });
 
-  const prettyHTML = pretty(dom.serialize());
-  fs.writeFileSync(path.join(config.BUILD_FOLDER, "index.html"), prettyHTML);
+  logOK(`Generated ${templates.length} templates.`);
 }
 
-module.exports.makeLandingPage = makeLandingPage;
-/**
- * Generates a background from scratch using trianglify or gets the bg defined in settings.
- * In either case a bg.png file is created in build/media/img
- */
-function makeLandingPageBackground() {
-  let dstPath = path.join(config.BUILD_FOLDER, "media", "img", "bg.png");
-  if (config.LANDING_PAGE_BG !== "auto") {
-    try {
-      fs.copyFileSync(config.LANDING_PAGE_BG, dstPath);
-      logOK(`Background copied: ${config.LANDING_PAGE_BG} => ${dstPath}`);
-    } catch (error) {
-      logError(error);
-    }
-  } else {
-    const canvas = trianglify({
-      width: 1920,
-      height: 1080,
-      cellSize: getRandomInt(75, 300),
-    }).toCanvas();
-
-    try {
-      const file = fs.createWriteStream(dstPath);
-      canvas.createPNGStream().pipe(file);
-      logOK(`Generated background and copied into: ${dstPath}`);
-    } catch (error) {
-      logError(error);
-    }
-  }
-}
+module.exports.makeTemplates = makeTemplates;
 
 /**
  *  Generates icons locally using pure Javascript with no external dependencies.

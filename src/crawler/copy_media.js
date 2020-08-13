@@ -10,8 +10,8 @@ const columnify = require("columnify");
 exports.copyMedia = () => {
   logTitle("Copy media resources.");
   const { BUILD_FOLDER, CONTENT_FOLDER } = config;
-  const srcPath = path.join(CONTENT_FOLDER, "media");
-  const dstPath = path.join(BUILD_FOLDER, "media");
+  const srcPath = path.join(CONTENT_FOLDER, "img");
+  const dstPath = path.join(BUILD_FOLDER, "img");
   let filesCopied = [];
   const filterFunction = (src, dst) => {
     if (fse.lstatSync(src).isFile()) {
@@ -25,6 +25,7 @@ exports.copyMedia = () => {
   };
 
   //   console.log(columnify(new Array(filesCopied)));
+  fse.ensureDirSync(dstPath);
   fse.copySync(srcPath, dstPath, { recursive: true, filter: filterFunction });
   logStatus(columnify(filesCopied) + "\n");
 

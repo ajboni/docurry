@@ -2,11 +2,13 @@ exports.config = {
   /* Project Name and logo on the navbar. */
   PROJECT_NAME: "Docurry",
   PROJECT_DESCRIPTION: "A spicy static documentation site generator.",
-  PROJECT_LOGO: "./content/media/img/logo.png",
-  FAVICON: "./content/media/img/logo.png",
 
   /* Folder where src docs are located. */
   CONTENT_FOLDER: "./content",
+
+  /* Images, relative to CONTENT_FOLDER  */
+  PROJECT_LOGO: "img/logo.png",
+  FAVICON: "img/logo.png",
 
   /*   Folder where built files will be located. */
   BUILD_FOLDER: "./build",
@@ -14,7 +16,8 @@ exports.config = {
   /*  ID for the default language. It will be accesible without any prefix in the slug. */
   DEFAULT_LANGUAGE_ID: "en",
 
-  /* Available languages */
+  /* Available languages 
+  First language will be the default language. It will be accesible without any prefix in the slug.*/
   LANGUAGES: [
     { id: "en", caption: "English" },
     { id: "es", caption: "Español" },
