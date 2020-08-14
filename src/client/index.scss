@@ -5,6 +5,11 @@
   background-size: cover;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .cover::after {
@@ -16,7 +21,7 @@
   width: 100%;
   height: 100%;
   z-index: -100;
-  opacity: 0.8;
+  opacity: 0.6;
   background-image: url("http://placekitten.com/1500/1000");
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -26,4 +31,69 @@
   -webkit-background-size: cover;
   background-size: cover;
   background-image: url("/img/bg.png");
+}
+
+main.cover-content {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+main img {
+  width: 30%;
+}
+
+p {
+  margin: 0 !important;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem !important;
+}
+
+blockquote {
+  font-size: 1.1rem;
+  text-align: center;
+  border: none !important;
+  margin: 0;
+}
+
+ol {
+  list-style-type: none !important;
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+  list-style-type: none !important;
+}
+
+ul li {
+  font-size: 0.9rem;
+  height: 2rem;
+  padding: 0.35rem 0.6rem;
+  background: #3b4351;
+  border-color: #3b4351;
+  color: #fff;
+  border-radius: 0.1rem;
+  cursor: pointer;
+}
+
+ul li a {
+  color: inherit;
+}
+
+h5 {
+  font-size: 10rem !important;
+  margin: 0 !important;
+  line-height: 1 !important;
 }

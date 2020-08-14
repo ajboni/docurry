@@ -2,7 +2,12 @@ const { readFileSync } = require("fs-extra");
 const Mustache = require("mustache");
 const matter = require("gray-matter");
 const { config } = require("../../config");
-var md = require("markdown-it")();
+
+var md = require("markdown-it")({
+  html: true,
+  //   linkify: true,
+  //   typography: true,
+}).use(require("markdown-it-imsize"), { autofill: true });
 
 /**
  * Given a filepath it will return a document with markdown processed, metadata replaced, and converted to html

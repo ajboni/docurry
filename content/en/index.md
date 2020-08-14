@@ -1,13 +1,21 @@
 ---
-title:
-description:
+title: Docurry - A spicy documentation site generator.
+description: A spicy documentation site generator.
 ---
 
-![logo](../media/logo.png ":size=120")
+<!-- ![Docurry Logo](img/logo.png) -->
+
+##### 🍛
 
 # Docurry
 
-> A spicy static documentation site generator..
+> A spicy documentation site generator.
 
-[Docs](docs/)
-[Github](#)
+1. Simple and fast.
+2. Statically built HTML. No router.
+3. Multiple languages.
+4. SEO and Mobile First
+5. Open Source.
+
+- [Docs](docs/)
+- [Github](#)
