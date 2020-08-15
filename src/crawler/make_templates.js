@@ -46,7 +46,7 @@ module.exports.makeTemplates = makeTemplates;
  * @returns object with 'files' 'images' 'html' arrays.
  */
 async function makeFavicons() {
-  const source = config.PROJECT_LOGO; // Source image(s). `string`, `buffer` or array of `string`
+  const source = path.join(config.CONTENT_FOLDER, config.PROJECT_LOGO); // Source image(s). `string`, `buffer` or array of `string`
   const configuration = {
     path: "/favicons", // Path for overriding default icons path. `string`
     appName: config.PROJECT_NAME, // Your application's name. `string`
@@ -97,8 +97,8 @@ async function makeFavicons() {
       !fs.existsSync(cachePath) ||
       !fs.existsSync(".cache/favicons/manifest.json")
     ) {
-      logBg("Building favicons cache");
-      const faviconsData = await favicons(source, configuration);
+      logJob("Building favicons cache");
+      let faviconsData = await favicons(source, configuration);
 
       ensureDirSync(cachePath);
       ensureDirSync(path.join(cachePath, "favicons"));
@@ -137,4 +137,8 @@ async function makeFavicons() {
 
   logOK(`Favicons copied.`);
   return faviconsData;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

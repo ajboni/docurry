@@ -1,4 +1,5 @@
 const chalk = require("chalk");
+const ora = require("ora");
 
 exports.logStatus = (msg) => {
   console.log(chalk.gray`${msg}`);
@@ -12,6 +13,10 @@ exports.logError = (msg) => {
 
 exports.logBg = (msg) => {
   console.log(chalk.hex("#f29312")`[BACKGROUND] ${msg}`);
+};
+
+exports.logBg = (msg) => {
+  console.log(chalk.hex("#f29312")`[...] ${msg}`);
 };
 
 exports.logWarning = (msg) => {};
