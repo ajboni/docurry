@@ -13,4 +13,4 @@ A spicy documentation site generator.
 - [ ] Auto generate search
 - [ ] Auto generate landing page.
 
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+Docurry is VERY inspired by [Docsify](https://github.com/docsifyjs/)

@@ -1,6 +1,6 @@
 # What?
 
-Nicedocs is an extremely simple documentation website generator powered by Sapper and Svelte.
+Docurry is an extremely simple documentation website generator.
 The idea is that you focus on writing the content and let the presentation be generated automatically.
 
 Its main features are:
@@ -11,5 +11,4 @@ Its main features are:
 - SEO and Mobile first.
 - Supports multiple languages.
 - Blazing fast.
-- Extensible. The power of svelte at your hands.
 - Syntax Highlighting via PrismJS.
