@@ -6,10 +6,11 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-content: center;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: start;
+  padding: 1rem;
 }
 
 .cover::after {
@@ -31,6 +32,10 @@
   -webkit-background-size: cover;
   background-size: cover;
   background-image: url("/img/bg.png");
+}
+
+main {
+  height: 100%;
 }
 
 main.cover-content {
@@ -100,4 +105,39 @@ h5 {
 
 *:visited {
   color: inherit !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+nav {
+  align-self: end;
+}
+
+.popover .popover-container {
+  width: 170px !important;
+}
+
+.language-selector a {
+  display: flex;
+  column-gap: 0.4rem;
+}
+
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+  background-color: white;
+  border: 1px solid #3b4351;
+  border-radius: 2px;
+  padding: 0.5rem;
+  //   max-width: 6rem;
+}
+
+.popover.popover-left .popover-container {
+  left: 0;
+  bottom: 100% !important;
+  top: 0 !important;
 }

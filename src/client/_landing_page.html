@@ -7,9 +7,27 @@
       <meta name="description" content="{{PROJECT_DESCRIPTION}}" />
     </head>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
   </head>
   <body>
     <div class="cover">
+      <nav id="nav">
+        <div class="popover popover-left">
+          <button class="btn btn-sm">
+            <img height="20" width="20" src="/img/icons/translate.svg" />
+          </button>
+          <div class="popover-container">
+            <div class="language-selector">
+              {{#LANGUAGES}}
+              <a href="/{{id}}">
+                <span class="flag-icon flag-icon-{{iso}}"></span>{{caption}}
+              </a>
+
+              {{/LANGUAGES}}
+            </div>
+          </div>
+        </div>
+      </nav>
       <main id="cover-content" class="cover-content"></main>
     </div>
   </body>

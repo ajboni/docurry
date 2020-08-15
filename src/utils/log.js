@@ -1,5 +1,4 @@
 const chalk = require("chalk");
-const ora = require("ora");
 
 exports.logStatus = (msg) => {
   console.log(chalk.gray`${msg}`);

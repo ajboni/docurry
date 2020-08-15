@@ -9,7 +9,7 @@ A spicy documentation site generator.
 - [ ] Auto generate sidebar
 - [ ] Multi-language support
 - [ ] SEO first
-- [ ] Mobile first
+- [ ] Mobile first\\$\$
 - [ ] Auto generate search
 - [ ] Auto generate landing page.
 

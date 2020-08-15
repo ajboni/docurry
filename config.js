@@ -17,10 +17,14 @@ exports.config = {
   DEFAULT_LANGUAGE_ID: "en",
 
   /* Available languages 
-  First language will be the default language. It will be accesible without any prefix in the slug.*/
+  First language will be the default language. Landing page will be accesible without any prefix in the slug.
+  If there is only one langugage, the entire site will be accesed without language path in the url.
+  id is: ISO 3166-1-alpha-2 code
+  */
+
   LANGUAGES: [
-    { id: "en", caption: "English" },
-    { id: "es", caption: "Español" },
+    { id: "en", caption: "English", iso: "gb" },
+    { id: "es", caption: "Español", iso: "es" },
   ],
 
   /* Should we show the default language doc if the localized version cannot be found ? */

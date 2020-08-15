@@ -1,19 +1,13 @@
 const fs = require("fs");
-const favicons = require("favicons");
 const { config } = require("../../config");
 const path = require("path");
+const Mustache = require("mustache");
 const { join } = require("path");
 const { logTitle, logOK, logError, logBg } = require("../utils/log");
 const { getRandomInt } = require("../utils/math_utils");
 const trianglify = require("trianglify");
-const {
-  copySync,
-  ensureDirSync,
-  readFile,
-  pathExistsSync,
-} = require("fs-extra");
+const { ensureDirSync, pathExistsSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
-const pretty = require("pretty");
 
 const { processDocument } = require("./process_document");
 const { title } = require("process");
@@ -36,11 +30,18 @@ async function makeLandingPages() {
       }
     }
 
-    const document = processDocument(indexPath);
+    const document = processDocument(indexPath, lang);
+
     let dstPath = path.join(config.BUILD_FOLDER, lang.id, "index.html");
 
     /* Concatenate with generated template */
-    let template = fs.readFileSync(path.join(".temp", "_landing_page.html"));
+    let template = fs.readFileSync(path.join(".temp", "_landing_page.html"), {
+      encoding: "utf-8",
+    });
+
+    /* Replace variables in template */
+    template = Mustache.render(template, config);
+
     let dom = new JSDOM(template);
     const el = dom.window.document.getElementById("cover-content");
     el.innerHTML = document.html;
