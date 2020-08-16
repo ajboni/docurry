@@ -44,7 +44,7 @@ exports.processDocument = function (path, lang) {
     var relative = new RegExp("^(?:[a-z]+:)?//", "i");
     if (!relative.test(link.href)) {
       if (link.href.startsWith("/"))
-        link.href = `${lang.id}/${link
+        link.href = `/${lang.id}/${link
           .toString()
           .substr(1, link.toString().length)}`;
     }

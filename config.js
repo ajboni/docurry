@@ -39,4 +39,6 @@ exports.config = {
 
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
+
+  ADD_LANGUAGE_SELECTOR: true,
 };

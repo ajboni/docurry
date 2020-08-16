@@ -11,6 +11,7 @@
   </head>
   <body>
     <div class="cover">
+      {{#ADD_LANGUAGE_SELECTOR}}
       <nav id="nav">
         <div class="popover popover-left">
           <button class="btn btn-sm">
@@ -22,12 +23,13 @@
               <a href="/{{id}}">
                 <span class="flag-icon flag-icon-{{iso}}"></span>{{caption}}
               </a>
-
               {{/LANGUAGES}}
             </div>
           </div>
         </div>
       </nav>
+      {{/ADD_LANGUAGE_SELECTOR}}
+
       <main id="cover-content" class="cover-content"></main>
     </div>
   </body>
