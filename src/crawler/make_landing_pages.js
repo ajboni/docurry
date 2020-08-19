@@ -10,7 +10,6 @@ const { ensureDirSync, pathExistsSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
 
 const { processDocument } = require("./process_document");
-const { title } = require("process");
 
 async function makeLandingPages() {
   logTitle("Generate Landing Pages");
@@ -35,7 +34,7 @@ async function makeLandingPages() {
     let dstPath = path.join(config.BUILD_FOLDER, lang.id, "index.html");
 
     /* Concatenate with generated template */
-    let template = fs.readFileSync(path.join(".temp", "_landing_page.html"), {
+    let template = fs.readFileSync(path.join(".temp", "landing_page.html"), {
       encoding: "utf-8",
     });
 

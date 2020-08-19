@@ -9,6 +9,7 @@ const { makeStyles } = require("./make_styles");
 const { ensureDirSync } = require("fs-extra");
 const { initBuildFolder } = require("./init_build_folder");
 const { makeTemplates } = require("./make_templates");
+const { makeDocPages } = require("./make_docs_pages");
 const { BUILD_FOLDER } = config;
 
 async function crawl() {
@@ -33,6 +34,7 @@ async function crawl() {
 
   /* Process Footer*/
   /* Process Documents */
+  await makeDocPages();
   /* Process Sidebar */
 
   /* Build Completed */

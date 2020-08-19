@@ -14,7 +14,7 @@ exports.logBg = (msg) => {
   console.log(chalk.hex("#f29312")`[BACKGROUND] ${msg}`);
 };
 
-exports.logBg = (msg) => {
+exports.logJob = (msg) => {
   console.log(chalk.hex("#f29312")`[...] ${msg}`);
 };
 

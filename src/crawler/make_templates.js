@@ -2,7 +2,7 @@ const fs = require("fs");
 const favicons = require("favicons");
 const { config } = require("../../config");
 const path = require("path");
-const { logTitle, logOK, logError, logBg } = require("../utils/log");
+const { logTitle, logOK, logError, logBg, logJob } = require("../utils/log");
 const { copySync, ensureDirSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
 const pretty = require("pretty");
@@ -14,10 +14,10 @@ async function makeTemplates() {
   /* Base templates to be generated */
   const templates = [
     {
-      name: "_landing_page.html",
-      path: path.join("src", "client", "_landing_page.html"),
+      name: "landing_page.html",
+      path: path.join("src", "client", "landing_page.html"),
     },
-    { name: "_docs.html", path: path.join("src", "client", "_docs.html") },
+    { name: "docs.html", path: path.join("src", "client", "docs.html") },
   ];
 
   /* Generates Favicons */

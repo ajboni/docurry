@@ -3,8 +3,8 @@ const chokidar = require("chokidar");
 const { copyMedia } = require("./src/crawler/copy_media");
 
 /* Set up dev live-reload */
-setUpLiveReload();
 crawl();
+setUpLiveReload();
 
 /**
  * Sets up live reload for dev environment.
