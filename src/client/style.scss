@@ -7,5 +7,5 @@ $primary-color: #3b4351;
 /* End of customization, do not edit below. */
 
 // Import full Spectre source code
-@import "index.scss";
 @import "node_modules/spectre.css/src/spectre";
+@import "_landing_page.scss";

@@ -1,3 +1,5 @@
+// CSS for landing page
+
 .cover {
   align-items: center;
   background-position: 50%;
@@ -103,8 +105,12 @@ h5 {
   line-height: 1 !important;
 }
 
-*:visited {
+a:visited {
   color: inherit !important;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 a {
@@ -118,11 +124,18 @@ nav {
 
 .popover .popover-container {
   width: 170px !important;
+  transition: 0s all 0.2s;
 }
 
 .language-selector a {
   display: flex;
   column-gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.language-selector a:hover {
+  background-color: $primary-color;
+  color: #fff !important;
 }
 
 .language-selector {
@@ -132,8 +145,6 @@ nav {
   background-color: white;
   border: 1px solid #3b4351;
   border-radius: 2px;
-  padding: 0.5rem;
-  //   max-width: 6rem;
 }
 
 .popover.popover-left .popover-container {
