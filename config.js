@@ -41,4 +41,7 @@ exports.config = {
   LANDING_PAGE_BG: "auto",
 
   ADD_LANGUAGE_SELECTOR: true,
+
+  /* File contents of this list will be available for use as a variable in a template or markdown as {{filepath}} */
+  EXTRA_FILES_AS_VARIABLES: ["README.md", "a.md"],
 };

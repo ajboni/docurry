@@ -4,6 +4,7 @@ const matter = require("gray-matter");
 const { config } = require("../../config");
 const { getFilenameFromPath } = require("../utils/string_utils");
 const { JSDOM } = require("jsdom");
+var v = require("voca");
 
 var md = require("markdown-it")({
   html: true,
@@ -17,12 +18,18 @@ var md = require("markdown-it")({
  * @param {Filepath} path
  * @returns An object with: content, data, html properties.
  */
-exports.processDocument = function (path, lang) {
-  const fallbackTitle = getFilenameFromPath(path);
+exports.processDocument = function (path, lang, extraFiles = {}) {
+  const fallbackTitle = `${v.titleCase(getFilenameFromPath(path, false))} - ${
+    config.PROJECT_NAME
+  }`;
   const indexContentMD = readFileSync(path, { encoding: "utf-8" });
 
   /* Process Frontmatter */
   let document = matter(indexContentMD);
+
+  /* Process Extra Files */
+  if (extraFiles)
+    document.content = Mustache.render(document.content, extraFiles);
 
   /* Render Markdown */
   document.html = md.render(document.content);

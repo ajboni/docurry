@@ -75,6 +75,7 @@ $primary-color: #3b4351;
   flex: 1 1 auto;
   padding: 0 4rem;
   width: calc(100vw - 12rem);
+  margin-top: 4rem;
 }
 .docs-content > .container {
   margin-left: 0;
@@ -92,8 +93,8 @@ $primary-color: #3b4351;
   display: inline;
   text-decoration: none;
 }
-.docs-content .s-subtitle,
-.docs-content .s-title {
+.docs-content h2,
+.docs-content h1 {
   line-height: 1.8rem;
   margin-bottom: 0;
   padding-bottom: 1rem;
@@ -101,15 +102,15 @@ $primary-color: #3b4351;
   position: static;
 }
 @supports ((position: -webkit-sticky) or (position: sticky)) {
-  .docs-content .s-subtitle,
-  .docs-content .s-title {
+  .docs-content h2,
+  .docs-content h1 {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 99;
   }
-  .docs-content .s-subtitle::before,
-  .docs-content .s-title::before {
+  .docs-content h2::before,
+  .docs-content h1::before {
     background: #fff;
     bottom: 0;
     content: "";
@@ -121,12 +122,12 @@ $primary-color: #3b4351;
     z-index: -1;
   }
 }
-.docs-content .s-subtitle:hover .anchor,
-.docs-content .s-title:hover .anchor {
+.docs-content h2:hover .anchor,
+.docs-content h1:hover .anchor {
   display: inline;
 }
-.docs-content .s-subtitle + .docs-note,
-.docs-content .s-title + .docs-note {
+.docs-content h2 + .docs-note,
+.docs-content h1 + .docs-note {
   margin-top: 0.4rem;
 }
 .docs-content .docs-demo {
@@ -418,13 +419,13 @@ $primary-color: #3b4351;
     padding: 0 1.5rem;
     width: 100%;
   }
-  .docs-content .s-subtitle,
-  .docs-content .s-title {
+  .docs-content h2,
+  .docs-content h1 {
     padding-top: 5rem;
     position: static;
   }
-  .docs-content .s-subtitle::before,
-  .docs-content .s-title::before {
+  .docs-content h2::before,
+  .docs-content h1::before {
     content: none;
   }
   .section-hero .s-brand {

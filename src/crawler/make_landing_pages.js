@@ -10,9 +10,11 @@ const { ensureDirSync, pathExistsSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
 
 const { processDocument } = require("./process_document");
+const { parseExtraFiles } = require("./parse_extra_files");
 
 async function makeLandingPages() {
   logTitle("Generate Landing Pages");
+  const extraFiles = parseExtraFiles();
   makeLandingPageBackground();
 
   /* Process Markdown and write output */
@@ -29,7 +31,7 @@ async function makeLandingPages() {
       }
     }
 
-    const document = processDocument(indexPath, lang);
+    const document = processDocument(indexPath, lang, extraFiles);
 
     let dstPath = path.join(config.BUILD_FOLDER, lang.id, "index.html");
 

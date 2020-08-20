@@ -4,15 +4,15 @@
 
 A spicy documentation site generator.
 
-# Features
+## Features
 
 - [ ] Write content in pure markdown.
 - [ ] Plain html output. Static. No routers
 - [ ] Auto generate sidebar
 - [ ] Multi-language support
 - [ ] SEO first
-- [ ] Mobile first\\\$\$
+- [ ] Mobile first
 - [ ] Auto generate search
-- [ ] Auto generate landing page.
+- [x] Auto generate landing page.
 
-Docurry is VERY inspired by [Docsify](https://github.com/docsifyjs/)
+Docurry is VERY inspired [Docsify](https://github.com/docsifyjs/) and EXTREMELY based on the [Spectre Doc Site](https://picturepan2.github.io/spectre/getting-started.html)

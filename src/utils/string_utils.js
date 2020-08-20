@@ -1,4 +1,6 @@
 const path = require("path");
+const { readdirSync } = require("fs");
+
 exports.removeFileExtension = function (str) {
   return str.replace(/\.[^/.]+$/, "");
 };
@@ -13,4 +15,10 @@ exports.changeFileExtension = function (filepath, newExtension) {
     path.dirname(filepath),
     path.basename(filepath, path.extname(filepath)) + "." + newExtension
   );
+};
+
+exports.getFolders = function (source) {
+  readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 };

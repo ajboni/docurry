@@ -2,23 +2,18 @@ const fs = require("fs");
 const { config } = require("../../config");
 const path = require("path");
 const Mustache = require("mustache");
-const { join } = require("path");
 const { logTitle, logOK, logError, logBg } = require("../utils/log");
-const { getRandomInt } = require("../utils/math_utils");
-const trianglify = require("trianglify");
-const { ensureDirSync, pathExistsSync, ensureFileSync } = require("fs-extra");
+const { ensureDirSync, ensureFileSync } = require("fs-extra");
 const { JSDOM } = require("jsdom");
 
 const { processDocument } = require("./process_document");
 const { glob } = require("glob");
-const {
-  getFilenameFromPath,
-  removeFileExtension,
-  changeFileExtension,
-} = require("../utils/string_utils");
+const { changeFileExtension } = require("../utils/string_utils");
+const { parseExtraFiles } = require("./parse_extra_files");
 
 async function makeDocPages() {
   logTitle("Generate Doc Pages");
+  const extraFiles = parseExtraFiles();
 
   /* Process Markdown and write output */
   const langs = config.LANGUAGES;
@@ -46,58 +41,36 @@ async function makeDocPages() {
       targetPath = changeFileExtension(targetPath, "html");
       ensureFileSync(targetPath);
 
-      /* TODO: What if content folder is nested?*/
-
-      //   let targetPath = file.split(path.sep);
-      //   targetPath[0] = config.BUILD_FOLDER;
-      //   targetPath[targetPath.length - 1] = changeFileExtension(
-      //     targetPath[targetPath.length - 1],
-      //     "html"
-      //   );
-
-      //   targetPath = targetPath.join(path.sep);
-
-      const document = processDocument(file, lang);
-
       /* TODO: STRIP ordering prefix */
-      /* TODO: Add to sidebar object */
 
       let template = fs.readFileSync(path.join(".temp", "docs.html"), {
         encoding: "utf-8",
       });
 
-      /* Replace variables in template */
-      template = Mustache.render(template, config);
-      fs.writeFileSync(targetPath, template);
+      /* Process Document */
+      const document = processDocument(file, lang, extraFiles);
 
-      // 	let dom = new JSDOM(template);
-      // 	const el = dom.window.document.getElementById("cover-content");
-      // 	el.innerHTML = document.html;
-      // 	/* Set up metadata */
-      // 	dom.window.document.title = document.data.title;
-      // 	dom.window.document
-      // 	  .querySelector('meta[name="description"]')
-      // 	  .setAttribute("content", document.data.description);
-      // 	const processedHTML = dom.serialize();
+      /* Replace variables in template */
+
+      const variables = { ...config, ...document.data };
+      template = Mustache.render(template, variables);
+
+      let dom = new JSDOM(template);
+      const el = dom.window.document.getElementById("content");
+      el.innerHTML = document.html;
+
+      /* Set up metadata */
+      dom.window.document.title = document.data.title;
+      dom.window.document
+        .querySelector('meta[name="description"]')
+        .setAttribute("content", document.data.description);
+      const processedHTML = dom.serialize();
+
       // 	/* Finally write the file */
-      // 	fs.writeFileSync(dstPath, processedHTML, { encoding: "utf-8" });
-      // 	/* Default language get special treatment */
-      // 	if (index === 0) {
-      // 	  /* TODO: Process links and make it relative to the lang folder. */
-      // 	  fs.writeFileSync(
-      // 		path.join(config.BUILD_FOLDER, "index.html"),
-      // 		processedHTML,
-      // 		{ encoding: "utf-8" }
-      // 	  );
-      // 	}
-      //   });
-      //   /* Concatenate with generated template */
-      //   let template = fs.readFileSync(path.join(".temp", "docs.html"), {
-      //     encoding: "utf-8",
+      fs.writeFileSync(targetPath, processedHTML, { encoding: "utf-8" });
     });
 
     //   fs.writeFileSync("./build/en/docs/index.html", template);
   });
 }
-
 module.exports.makeDocPages = makeDocPages;

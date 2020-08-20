@@ -4,7 +4,7 @@
   "description": "A spicy static documentation site generator.",
   "main": "index.js",
   "scripts": {
-    "dev": "rm -rf ./build && NODE_ENV=development concurrently --names \"build,webserver\" \"npm:build\" \"wait-on ./build/.build.log && npx live-server ./build\"",
+    "dev": "rm -rf ./build && NODE_ENV=development concurrently --names \"build,webserver\" \"npm:build\" \"wait-on ./build/.build.log && npx live-server --no-browser ./build\"",
     "build": "node build.js"
   },
   "keywords": [
@@ -33,11 +33,13 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-mark": "^3.0.0",
+    "minimatch": "^3.0.4",
     "mustache": "^4.0.1",
     "node-sass": "^4.14.1",
     "pretty": "^2.0.0",
     "spectre.css": "^0.5.9",
     "trianglify": "^4.0.0",
+    "voca": "^1.4.0",
     "wait-on": "^5.2.0"
   }
 }
