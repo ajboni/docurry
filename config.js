@@ -43,5 +43,8 @@ exports.config = {
   ADD_LANGUAGE_SELECTOR: true,
 
   /* File contents of this list will be available for use as a variable in a template or markdown as {{filepath}} */
-  EXTRA_FILES_AS_VARIABLES: ["README.md", "a.md"],
+  EXTRA_FILES_AS_VARIABLES: ["README.md"],
+
+  /* Whether to strip .html extension in generated links (sidebar) (eg: /en/docs/tutorial.html => /en/docs/tutorial ) */
+  REMOVE_EXTENSION_FROM_LINKS: true,
 };

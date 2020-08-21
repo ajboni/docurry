@@ -1,5 +1,6 @@
 const path = require("path");
 const { readdirSync } = require("fs");
+const { replaceAll } = require("voca");
 
 exports.removeFileExtension = function (str) {
   return str.replace(/\.[^/.]+$/, "");
@@ -11,9 +12,12 @@ exports.getFilenameFromPath = function (filepath, includeExtension = true) {
 };
 
 exports.changeFileExtension = function (filepath, newExtension) {
+  if (newExtension !== "") {
+    newExtension = `.${newExtension}`;
+  }
   return path.join(
     path.dirname(filepath),
-    path.basename(filepath, path.extname(filepath)) + "." + newExtension
+    path.basename(filepath, path.extname(filepath)) + newExtension
   );
 };
 
@@ -21,4 +25,28 @@ exports.getFolders = function (source) {
   readdirSync(source, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name);
+};
+
+/**
+ * Strip __ prefix and anything before that (used for sorting purposes) and return the clean name
+ *
+ * @param {string} str
+ * @returns The string without the __prefix
+ */
+exports.removeSortingPrefix = function (str) {
+  return replaceAll(str, /[^_\\\/]*__/, "");
+};
+
+/**
+ *  Check if a string is a valid JSON string in JavaScript without
+ * @param {string } str
+ * @returns True/False if string is valid json
+ */
+exports.isValidJSON = function (str) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
 };
