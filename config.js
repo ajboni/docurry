@@ -46,5 +46,5 @@ exports.config = {
   EXTRA_FILES_AS_VARIABLES: ["README.md"],
 
   /* Whether to strip .html extension in generated links (sidebar) (eg: /en/docs/tutorial.html => /en/docs/tutorial ) */
-  REMOVE_EXTENSION_FROM_LINKS: true,
+  REMOVE_EXTENSION_FROM_LINKS: false,
 };

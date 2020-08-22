@@ -60,49 +60,14 @@
       </div>
 
       <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
-        <div class="docs-brand">
-          <a class="docs-logo" href="../index.html"
-            ><img src="/{{PROJECT_LOGO}}" alt="{{PROJECT_DESCRIPTION}}" />
-            <h2>{{PROJECT_NAME}}</h2>
-            <small class="label label-secondary text-bold">DOCS</small></a
-          >
-        </div>
-        <div class="docs-nav">
-          {{#SIDEBAR_TITLE}}
-          <div class="accordion-container">
-            <div class="accordion">
-              <input
-                id="accordion-getting-started"
-                type="checkbox"
-                name="docs-accordion-checkbox"
-                hidden=""
-              />
-              <label
-                class="accordion-header c-hand"
-                for="accordion-getting-started"
-                >Getting started</label
-              >
-              <div class="accordion-body">
-                <ul class="menu menu-nav">
-                  {{#SIDEBAR_ENTRY}}
-                  <li class="menu-item">
-                    <a href="../getting-started/installation.html"
-                      >Installation</a
-                    >
-                  </li>
-                  {{/SIDEBAR_ENTRY}}
-                </ul>
-              </div>
-            </div>
-          </div>
-          {{/SIDEBAR_TITLE}}
-        </div>
+        <!-- Docs content will be appended here HERE (id='sidebar') -->
       </div>
       <a class="off-canvas-overlay" href="#close"></a>
 
       <div class="off-canvas-content">
-        <!-- Docs content HERE (id='content') -->
-        <div class="docs-content" id="content"></div>
+        <div class="docs-content" id="content">
+          <!-- Docs content HERE (id='content') -->
+        </div>
       </div>
     </div>
   </body>

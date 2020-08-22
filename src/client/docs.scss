@@ -61,11 +61,24 @@ $primary-color: #3b4351;
 .docs-sidebar .accordion input:checked ~ .accordion-header {
   color: #505c6e;
 }
+
+.docs-sidebar .docs-nav > .menu-item {
+  margin: 0;
+  list-style-type: none;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+}
+.accordion .accordion {
+  margin-bottom: 0.25rem;
+}
+
 .docs-sidebar .accordion .menu .menu-item {
   font-size: 0.7rem;
-  padding-left: 1rem;
+  padding-left: 0.4rem;
 }
-.docs-sidebar .accordion .menu .menu-item > a {
+.docs-sidebar .accordion .menu .menu-item > a,
+.docs-sidebar .docs-nav > .menu-item > a {
   background: 0 0;
   color: #66758c;
   display: inline-block;
@@ -986,9 +999,16 @@ $primary-color: #3b4351;
   }
 }
 
+.menu .menu-item + .menu-item {
+  margin-top: 0 !important;
+}
+.menu.menu-nav {
+  padding: 0 0.4rem;
+}
+
 /* End of customization, do not edit below. */
 
 // Import full Spectre source code
-@import "node_modules/spectre.css/src/spectre";
+@import "node_modules/spectre.css/src/spectre.scss";
 @import "node_modules/spectre.css/src/spectre-exp.scss";
 @import "node_modules/spectre.css/src/spectre-icons.scss";

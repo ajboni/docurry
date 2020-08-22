@@ -1,6 +1,6 @@
 const path = require("path");
 const { readdirSync } = require("fs");
-const { replaceAll } = require("voca");
+const { replaceAll, titleCase } = require("voca");
 
 exports.removeFileExtension = function (str) {
   return str.replace(/\.[^/.]+$/, "");
@@ -35,6 +35,23 @@ exports.getFolders = function (source) {
  */
 exports.removeSortingPrefix = function (str) {
   return replaceAll(str, /[^_\\\/]*__/, "");
+};
+
+/**
+ * Generates a "nice" caption from a filePath.
+ * Useful to show in sidebar or in the document html.
+ *
+ * @param {*} filePath
+ * @returns
+ */
+exports.captionFromPath = function (filePath) {
+  return replaceAll(
+    titleCase(
+      exports.removeSortingPrefix(exports.getFilenameFromPath(filePath, false))
+    ),
+    /[-_]/,
+    " "
+  );
 };
 
 /**

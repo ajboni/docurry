@@ -26,7 +26,6 @@ async function makeDocPages() {
   logTitle("Generate Doc Pages");
   const extraFiles = parseExtraFiles();
 
-  /* Process Markdown and write output */
   const langs = config.LANGUAGES;
 
   langs.forEach((lang, index) => {
@@ -59,6 +58,12 @@ async function makeDocPages() {
     const files = glob.sync(docsGlob, { ignore: ignoreGlob, nosort: true });
 
     files.forEach((file) => {
+      const type = fs.statSync(file).isFile()
+        ? "File"
+        : fs.statSync(file).isDirectory
+        ? "Folder"
+        : "Unknown";
+
       /* Create Target Path */
       let targetPath = path
         .normalize(file)
@@ -66,17 +71,13 @@ async function makeDocPages() {
           path.normalize(config.CONTENT_FOLDER),
           path.normalize(config.BUILD_FOLDER)
         );
-      targetPath = changeFileExtension(targetPath, "html");
+      targetPath = fs.statSync(file).isFile()
+        ? changeFileExtension(targetPath, "html")
+        : targetPath;
       targetPath = removeSortingPrefix(targetPath);
 
-      const type = fs.statSync(file).isFile()
-        ? "File"
-        : fs.statSync(file).isDirectory
-        ? "Directory"
-        : "Unknown";
-
       /* Add to sidebar */
-      addPathToSidebar(targetPath, sidebar, type);
+      addPathToSidebar(targetPath, sidebar, type, lang);
 
       /* We will only continue with markdown files */
       if (type !== "File") return;
@@ -110,23 +111,37 @@ async function makeDocPages() {
       // 	/* Finally write the file */
       fs.writeFileSync(targetPath, processedHTML, { encoding: "utf-8" });
     });
-    console.log(sidebar);
+
+    /* Write sidebar to target folder */
+    fs.writeFileSync(
+      path.join(config.BUILD_FOLDER, lang.id, "sidebar.json"),
+      JSON.stringify(sidebar),
+      { encoding: "utf-8" }
+    );
 
     //   fs.writeFileSync("./build/en/docs/index.html", template);
   });
 }
 module.exports.makeDocPages = makeDocPages;
 
-function addPathToSidebar(targetPath, sidebar, type) {
+function addPathToSidebar(targetPath, sidebar, type, lang) {
   if (!config.AUTO_GENERATE_SIDEBAR) return;
 
   let _path = config.REMOVE_EXTENSION_FROM_LINKS
     ? changeFileExtension(path.relative(config.BUILD_FOLDER, targetPath), "")
     : path.relative(config.BUILD_FOLDER, targetPath);
 
-  const name = basename(_path);
+  const name = basename(_path, path.extname(_path));
   const caption = replaceAll(titleCase(name), /[-_]/, " ");
-  let parent = basename(dirname(_path));
+
+  /* TODO: If type is file, load metadata to find possible caption. */
+  if (type === "File") {
+    // const content = fs.readFileSync();
+  }
+
+  /* Make pseudo absolute */
+  _path = "/" + _path;
+  let parent = path.dirname(_path);
 
   const obj = {
     name,
@@ -135,12 +150,39 @@ function addPathToSidebar(targetPath, sidebar, type) {
     type,
     parent,
     children: [],
+    isFolder: type === "Folder",
   };
 
-  const parentObj = sidebar.find((x) => x.name === parent);
+  //   const parentObj = sidebar.find((x) => x.name === parent);
+  const parentObj = findParentDeep(sidebar, parent);
+
   if (parentObj) {
     parentObj.children.push(obj);
   } else {
-    sidebar.push(obj);
+    if (
+      /* Index will be ommited in sidebar and accessed by the icon */
+      targetPath !==
+      path.join(config.BUILD_FOLDER, lang.id, "docs", "index.html")
+    ) {
+      sidebar.push(obj);
+    }
+  }
+}
+
+function findParentDeep(data, key) {
+  if (data.path === "/en/docs/website_generation/onempre") {
+    console.log("object");
+  }
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+
+    if (element.path === key) {
+      return element;
+    } else {
+      const match = findParentDeep(element.children, key);
+      if (match) {
+        return match;
+      }
+    }
   }
 }
