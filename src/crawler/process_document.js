@@ -14,8 +14,22 @@ var md = require("markdown-it")({
   html: true,
   //   linkify: true,
   //   typography: true,
-}).use(require("markdown-it-imsize"), { autofill: true });
-
+})
+  .use(require("markdown-it-imsize"), { autofill: true })
+  .use(require("markdown-it-anchor"), {
+    permalink: true,
+    // permalinkSymbol: "🔗",
+    // permalinkSpace: true,
+    permalinkBefore: true,
+  })
+  .use(require("markdown-it-external-links"), {
+    externalClassName: null,
+    externalRel: "noopener noreferrer",
+    externalTarget: "_blank",
+  })
+  .use(require("markdown-it-task-lists"), {
+    label: true,
+  });
 /**
  * Given a filepath it will return a document with markdown processed, metadata replaced, and converted to html
  *

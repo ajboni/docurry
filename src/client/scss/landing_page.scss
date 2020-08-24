@@ -154,6 +154,11 @@
   top: 0 !important;
 }
 
+/* Remove anchors from homepage */
+.header-anchor {
+  display: none;
+}
+
 /* End of customization, do not edit below. */
 
 // Import full Spectre source code

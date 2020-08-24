@@ -7,7 +7,22 @@ var md = require("markdown-it")({
   html: true,
   //   linkify: true,
   //   typography: true,
-}).use(require("markdown-it-imsize"), { autofill: true });
+})
+  .use(require("markdown-it-imsize"), { autofill: true })
+  .use(require("markdown-it-imsize"), { autofill: true })
+  .use(require("markdown-it-anchor"), {
+    permalink: true,
+    permalinkSymbol: "🔗",
+    permalinkSpace: true,
+  })
+  .use(require("markdown-it-external-links"), {
+    externalClassName: null,
+    externalRel: "noopener noreferrer",
+    externalTarget: "_blank",
+  })
+  .use(require("markdown-it-task-lists"), {
+    label: true,
+  });
 
 /**
  * Scans for extra files (eg: readme.md and returns them as an object.)
