@@ -10,9 +10,27 @@ const {
 const { JSDOM } = require("jsdom");
 var v = require("voca");
 
+const hljs = require("highlight.js");
+
 var md = require("markdown-it")({
   html: true,
-  //   linkify: true,
+  linkify: false,
+  // Actual default values
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return (
+          '<pre class="hljs"><code>' +
+          hljs.highlight(lang, str, true).value +
+          "</code></pre>"
+        );
+      } catch (__) {}
+    }
+
+    return (
+      '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>"
+    );
+  },
   //   typography: true,
 })
   .use(require("markdown-it-imsize"), { autofill: true })
@@ -30,6 +48,7 @@ var md = require("markdown-it")({
   .use(require("markdown-it-task-lists"), {
     label: true,
   });
+
 /**
  * Given a filepath it will return a document with markdown processed, metadata replaced, and converted to html
  *

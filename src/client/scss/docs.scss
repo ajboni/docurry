@@ -1042,4 +1042,7 @@ h6:hover .header-anchor {
 @import "node_modules/spectre.css/src/spectre.scss";
 @import "node_modules/spectre.css/src/spectre-exp.scss";
 @import "node_modules/spectre.css/src/spectre-icons.scss";
+
+/* Import github styles */
 @import "gh.scss";
+@import "node_modules/highlight.js/scss/github.scss";
