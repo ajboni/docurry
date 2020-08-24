@@ -1,7 +1,7 @@
 [
   {
     "name": "github",
-    "caption": "Github",
+    "caption": "GITHUB",
     "path": "https://github.com",
     "isFolder": false,
     "parent": "docs",

@@ -1,8 +1,4 @@
-// Define variables to override default ones
-
-/* Override variables and styles below */
-/* List of variables: https://picturepan2.github.io/spectre/getting-started/custom.html#variables */
-$primary-color: #3b4351;
+@import "variables.scss";
 
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
 .version::after {
@@ -298,6 +294,7 @@ $primary-color: #3b4351;
   margin-left: 0.5rem;
   margin-right: 0.3rem;
   text-transform: uppercase;
+  color: $primary-color;
 }
 .docs-footer {
   color: #bcc3ce;

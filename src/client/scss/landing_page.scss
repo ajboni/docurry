@@ -1,9 +1,4 @@
-// Define variables to override default ones
-
-/* Override variables and styles below */
-/* List of variables: https://picturepan2.github.io/spectre/getting-started/custom.html#variables */
-$primary-color: #3b4351;
-
+@import "variables.scss";
 // CSS for landing page
 
 .cover {
@@ -94,8 +89,8 @@ $primary-color: #3b4351;
   font-size: 0.9rem;
   height: 2rem;
   padding: 0.35rem 0.6rem;
-  background: #3b4351;
-  border-color: #3b4351;
+  background: $primary-color;
+  border-color: $primary-color;
   color: #fff;
   border-radius: 0.1rem;
   cursor: pointer;
@@ -149,7 +144,7 @@ $primary-color: #3b4351;
   flex-direction: column;
   row-gap: 0.2rem;
   background-color: white;
-  border: 1px solid #3b4351;
+  //   border: 1px solid $primary-color;
   border-radius: 2px;
 }
 
