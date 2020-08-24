@@ -7,7 +7,7 @@ exports.logOK = (msg) => {
   console.log(chalk.green`[OK] ${msg}`);
 };
 exports.logError = (msg) => {
-  console.log(chalk.red`[ERROR] ${msg}`);
+  console.trace(chalk.red`[ERROR] ${msg}`);
 };
 
 exports.logBg = (msg) => {

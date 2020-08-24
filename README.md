@@ -6,10 +6,10 @@ A spicy documentation site generator.
 
 ## Features
 
-- [ ] Write content in pure markdown.
-- [ ] Plain html output. Static. No routers
-- [ ] Auto generate sidebar
-- [ ] Multi-language support
+- [x] Write content in pure markdown.
+- [x] Plain html output. Static. No routers
+- [x] Auto generate sidebar
+- [x] Multi-language support
 - [ ] SEO first
 - [ ] Mobile first
 - [ ] Auto generate search
