@@ -10,10 +10,12 @@
     <input
       id="accordion-{{name}}"
       type="checkbox"
-      name="docs-accordion-checkbox"
+      name="docs-accordion-{{name}}"
       hidden=""
+      {{checked}}
     />
     <label class="accordion-header c-hand" for="accordion-{{name}}">
+      <i class="icon icon-arrow-right mr-1"></i>
       {{caption}}
     </label>
     <div class="accordion-body">

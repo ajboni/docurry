@@ -30,8 +30,19 @@ exports.makeSidebars = function () {
       let dom = new JSDOM(content);
       const el = dom.window.document.getElementById("sidebar");
 
+      /* Get relative path and mark JSON item as expanded */
+      const relPath = page.replace(path.normalize(config.BUILD_FOLDER), "");
+      const expandedSidebar = expandSidebarTo(
+        JSON.parse(JSON.stringify(sidebar)),
+        relPath
+      );
+
       /* Build u[ mustache view */
-      const view = { ...config, SIDEBAR: sidebar, ROOT: `/${lang.id}/docs` };
+      const view = {
+        ...config,
+        SIDEBAR: expandedSidebar,
+        ROOT: `/${lang.id}/docs`,
+      };
 
       const parsedSidebar = Mustache.render(template, view, {
         item: partial,
@@ -48,3 +59,38 @@ exports.makeSidebars = function () {
     // });
   });
 };
+
+/**
+ * Traverse all objects until reaching the path setting an expanded property on the object.
+ *  This is used to automatically expand the sidebar according to the current shown page.
+ * @param {Array} sidebar The sidebar array
+ * @param {string} docPath The document path.
+ * @returns A new object with the properties set.
+ */
+function expandSidebarTo(sidebar, docPath) {
+  const itemObj = getSidebarObjectDeep(sidebar, docPath);
+  if (itemObj && itemObj.parent) checkParent(sidebar, itemObj.parent);
+  return sidebar;
+}
+
+function getSidebarObjectDeep(sidebar, docPath) {
+  for (let index = 0; index < sidebar.length; index++) {
+    const element = sidebar[index];
+    if (element.path === docPath) {
+      return element;
+    } else {
+      if (element.children && element.children.length > 0) {
+        const match = getSidebarObjectDeep(element.children, docPath);
+        if (match) return match;
+      }
+    }
+  }
+}
+
+function checkParent(sidebar, docPath) {
+  const parentObj = getSidebarObjectDeep(sidebar, docPath);
+  if (!parentObj) return null;
+
+  parentObj.checked = "checked";
+  if (parentObj.parent) checkParent(sidebar, parentObj.parent);
+}

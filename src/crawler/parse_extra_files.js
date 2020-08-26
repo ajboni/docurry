@@ -12,8 +12,7 @@ var md = require("markdown-it")({
   .use(require("markdown-it-imsize"), { autofill: true })
   .use(require("markdown-it-anchor"), {
     permalink: true,
-    permalinkSymbol: "🔗",
-    permalinkSpace: true,
+    permalinkBefore: true,
   })
   .use(require("markdown-it-external-links"), {
     externalClassName: null,

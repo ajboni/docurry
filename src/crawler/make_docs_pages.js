@@ -151,6 +151,7 @@ function addPathToSidebar(targetPath, sidebar, type, lang) {
     parent,
     children: [],
     isFolder: type === "Folder",
+    checked: "", // This is needed because mustache will use parent context if the key is not found.
   };
 
   //   const parentObj = sidebar.find((x) => x.name === parent);
@@ -170,9 +171,10 @@ function addPathToSidebar(targetPath, sidebar, type, lang) {
 }
 
 function findParentDeep(data, key) {
-  if (data.path === "/en/docs/website_generation/onempre") {
-    console.log("object");
-  }
+  // TODO: Fix deep nesting
+  //   if (data.path === "/en/docs/website_generation/onempre") {
+  //     console.log("object");
+  //   }
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
 
