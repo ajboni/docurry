@@ -633,6 +633,7 @@ li.task-list-item {
   list-style-type: none;
 }
 
+// This could be MUCH better
 .header-anchor {
   font-size: 0.8em;
   vertical-align: middle;
@@ -640,8 +641,9 @@ li.task-list-item {
   color: #666;
   opacity: 0;
   position: absolute;
-  left: -1.8rem;
+  left: -2.5ch;
   padding: 0 1ch;
+  bottom: 0.2em;
 }
 
 .header-anchor:hover {
@@ -671,16 +673,23 @@ code {
 }
 
 pre.hljs {
-  padding: 1.4rem;
+  padding: 2.2em 1.4rem;
   position: relative;
 }
 
 .language-caption {
   position: absolute;
   top: 6px;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   right: 10px;
   color: #868680;
+}
+
+blockquote {
+  border-left: 0.2rem solid darken($color: $warning-color, $amount: 35);
+  background-color: $warning-color;
+  border-radius: 0.1rem;
+  margin: 0%;
 }
 
 /* End of customization, do not edit below. */

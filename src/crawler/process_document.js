@@ -19,7 +19,7 @@ var md = require("markdown-it")({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return `<pre class="hljs"><code class="language-${lang}">${
+        return `<pre class="hljs"><code data-lang="${lang}">${
           hljs.highlight(lang, str, true).value
         }</code></pre>`;
       } catch (__) {}
@@ -97,13 +97,12 @@ exports.processDocument = function (path, lang, extraFiles = {}) {
   }
 
   /* Add language information to <code> tags */
-  const blocks = dom.window.document.querySelectorAll(
-    'pre code[class*="language-"]'
-  );
+  const blocks = dom.window.document.querySelectorAll("pre.hljs code");
   blocks.forEach((element) => {
-    const lang = element.className.split("-")[1];
+    const lang = element.getAttribute("data-lang");
     const langElement = dom.window.document.createElement("label");
-    langElement.innerHTML = `<label class="language-caption">${lang}</label>`;
+    langElement.innerHTML = lang;
+    langElement.className = "language-caption";
 
     element.insertAdjacentElement("beforebegin", langElement);
   });
