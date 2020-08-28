@@ -19,11 +19,9 @@ var md = require("markdown-it")({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return (
-          '<pre class="hljs"><code>' +
-          hljs.highlight(lang, str, true).value +
-          "</code></pre>"
-        );
+        return `<pre class="hljs"><code class="language-${lang}">${
+          hljs.highlight(lang, str, true).value
+        }</code></pre>`;
       } catch (__) {}
     }
 
@@ -89,14 +87,26 @@ exports.processDocument = function (path, lang, extraFiles = {}) {
   const links = dom.window.document.getElementsByTagName("a");
 
   for (const link of links) {
-    var relative = new RegExp("^(?:[a-z]+:)?//", "i");
+    var relative = new RegExp("^(?:[a-z]+:)?///", "i");
     if (!relative.test(link.href)) {
-      if (link.href.startsWith("/"))
+      if (link.href.startsWith("//"))
         link.href = `/${lang.id}/${link
           .toString()
-          .substr(1, link.toString().length)}`;
+          .substr(2, link.toString().length)}`;
     }
   }
+
+  /* Add language information to <code> tags */
+  const blocks = dom.window.document.querySelectorAll(
+    'pre code[class*="language-"]'
+  );
+  blocks.forEach((element) => {
+    const lang = element.className.split("-")[1];
+    const langElement = dom.window.document.createElement("label");
+    langElement.innerHTML = `<label class="language-caption">${lang}</label>`;
+
+    element.insertAdjacentElement("beforebegin", langElement);
+  });
 
   document.html = dom.serialize();
 
