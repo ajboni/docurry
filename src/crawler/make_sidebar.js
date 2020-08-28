@@ -69,7 +69,10 @@ exports.makeSidebars = function () {
  */
 function expandSidebarTo(sidebar, docPath) {
   const itemObj = getSidebarObjectDeep(sidebar, docPath);
-  if (itemObj && itemObj.parent) checkParent(sidebar, itemObj.parent);
+  if (itemObj && itemObj.parent) {
+    checkParent(sidebar, itemObj.parent);
+    itemObj.isSelected = true;
+  }
   return sidebar;
 }
 

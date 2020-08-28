@@ -1,6 +1,9 @@
 {{^isFolder}}
 <li class="menu-item">
-  <a href="{{path}}">{{caption}}</a>
+  <a href="{{path}}">
+    {{#isSelected}}<strong>{{/isSelected}} {{caption}} {{#isSelected}} </strong
+    >{{/isSelected}}</a
+  >
 </li>
 {{/isFolder}}
 <!--  -->
