@@ -8,7 +8,7 @@ Its main features are:
 - Parses markdown files and generate navigation automatically.
 - Exports into a static site compatible with Github pages, Netlify, etc.
 - Simple html output, no router, no spa, no hash based navigation.
-- SEO and Mobile first.
+- SEO and Mobile friendly.
 - Supports multiple languages.
 - Blazing fast.
-- Syntax Highlighting via PrismJS.
+- Syntax Highlighting.

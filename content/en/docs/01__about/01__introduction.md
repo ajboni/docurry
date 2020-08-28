@@ -6,4 +6,4 @@ Please notice that the project is very alpha and may contain bugs and undocument
 
 Here's an puppy attempt, for the trouble:
 
-![dogo](/media/img/puppy.png)
+![dogo](/img/puppy.jpg)

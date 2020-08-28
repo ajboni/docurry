@@ -10,8 +10,8 @@ A spicy documentation site generator.
 - [x] Plain html output. Static. No routers
 - [x] Auto generate sidebar
 - [x] Multi-language support
-- [ ] SEO first
-- [ ] Mobile first
+- [ ] SEO Friendly
+- [ ] Mobile Friendly
 - [ ] Auto generate search
 - [x] Auto generate landing page.
 
