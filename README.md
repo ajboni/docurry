@@ -1,6 +1,6 @@
-# Docurry
 > Warning: This project is WIP and contains undocumented and untested features
-> 
+
+# Docurry
 A spicy documentation site generator.
 
 ## Features

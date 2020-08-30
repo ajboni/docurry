@@ -1,4 +1,5 @@
 const { readFileSync } = require("fs-extra");
+const path = require("path");
 const Mustache = require("mustache");
 const matter = require("gray-matter");
 const { config } = require("../../config");
@@ -50,12 +51,12 @@ var md = require("markdown-it")({
 /**
  * Given a filepath it will return a document with markdown processed, metadata replaced, and converted to html
  *
- * @param {Filepath} path
+ * @param {Filepath} filePath
  * @returns An object with: content, data, html properties.
  */
-exports.processDocument = function (path, lang, extraFiles = {}) {
-  const fallbackTitle = captionFromPath(path);
-  const indexContentMD = readFileSync(path, { encoding: "utf-8" });
+exports.processDocument = function (filePath, lang, extraFiles = {}) {
+  const fallbackTitle = captionFromPath(filePath);
+  const indexContentMD = readFileSync(filePath, { encoding: "utf-8" });
 
   /* Process Frontmatter */
   let document = matter(indexContentMD);
@@ -73,15 +74,19 @@ exports.processDocument = function (path, lang, extraFiles = {}) {
     ...document.data,
     ROOT: `${lang.id}/docs/`,
   };
-  if (!document.data.title) {
-    document.data.title = fallbackTitle;
-  }
 
-  document.data.title = `${document.data.title} - ${config.PROJECT_NAME}`;
-  if (!document.data.description) {
+  if (!document.data.title) document.data.title = fallbackTitle;
+
+  if (!document.data.description)
     document.data.description = config.PROJECT_DESCRIPTION;
-  }
 
+  /* On Landing pages we will format the title differently */
+  landingPagePath = path.join(config.CONTENT_FOLDER, lang.id, "index.md");
+  if (filePath === landingPagePath) {
+    document.data.title = `${document.data.title} · ${document.data.description}`;
+  } else {
+    document.data.title = `${document.data.title} · ${config.PROJECT_NAME}`;
+  }
   /* Make relative links relative to current language */
   var dom = new JSDOM(document.html);
   const links = dom.window.document.getElementsByTagName("a");

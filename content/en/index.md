@@ -1,6 +1,6 @@
 ---
-title: Docurry - A spicy documentation site generator.
-description: A spicy documentation site generator.
+title: Docurry
+description: A Spicy Documentation Site Generator.
 ---
 
 <!-- ![Docurry Logo](img/logo.png) -->
