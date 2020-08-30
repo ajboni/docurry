@@ -666,10 +666,17 @@ h6:hover .header-anchor {
   margin-right: 1ch;
 }
 
-code {
+pre.hljs code {
   background: unset;
   padding: 0;
+}
+
+code {
+  padding: 0.2em 0.4em;
   margin: 0;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 6px;
+  color: #24292e;
 }
 
 pre.hljs {
@@ -697,3 +704,10 @@ blockquote {
 // Import full Spectre source code
 
 /* Import github styles */
+code,
+kbd,
+pre,
+samp {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 0.7rem;
+}
