@@ -1,13 +1,13 @@
 ---
-title: Docurry - A spicy documentation site generator.
-description: A spicy documentation site generator.
+title: Docurry - Un generador de sitios estáticos de documentación.
+description: Un generador de sitios estáticos de documentación.
 ---
 
 ##### 🍛
 
 # Docurry
 
-El generador de sitios estaticos de documentación mas picante.
+El generador de sitios estáticos de documentación mas sabroso.
 
-- [Docs](docs/)
+- [Docs (Inglés)](/en/docs/)
 - [Github](https://github.com/ajboni/docurry)

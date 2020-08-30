@@ -17,5 +17,5 @@ description: A spicy documentation site generator.
 4. SEO and Mobile First
 5. Open Source.
 
-- [Docs](/docs/)
+- [Docs](//docs/)
 - [Github](https://github.com/ajboni/docurry)
