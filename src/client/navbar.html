@@ -1,0 +1,43 @@
+<a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar">
+  <i class="icon icon-menu"> </i>
+</a>
+<div class="btns d-flex">
+  {{#ENABLE_SEARCH}}
+  <span style="position: relative; display: inline-block; direction: ltr">
+    <input
+      class="docs-search form-input ds-input"
+      type="text"
+      placeholder="Search Docs"
+      autocomplete="off"
+      spellcheck="false"
+      role="combobox"
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-label="search input"
+      aria-owns="algolia-autocomplete-listbox-0"
+      style="position: relative; vertical-align: top"
+      dir="auto"
+    />
+
+    <span
+      class="ds-dropdown-menu"
+      style="
+        position: absolute;
+        top: 100%;
+        z-index: 100;
+        display: none;
+        left: 0px;
+        right: auto;
+      "
+      role="listbox"
+      id="algolia-autocomplete-listbox-0"
+    >
+      <div class="ds-dataset-1"></div>
+    </span>
+  </span>
+  {{/ENABLE_SEARCH}}
+  <!--  -->
+  {{#buttons}}
+  <a class="btn {{class}}" href="{{url}}" target="__blank">{{caption}} </a>
+  {{/buttons}}
+</div>

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "github",
+    "caption": "Github",
+    "path": "https://github.com",
+    "isFolder": false,
+    "parent": "docs",
+    "children": []
+  }
+]

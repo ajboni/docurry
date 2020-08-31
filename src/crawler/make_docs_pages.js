@@ -29,6 +29,18 @@ async function makeDocPages() {
   const langs = config.LANGUAGES;
 
   langs.forEach((lang, index) => {
+    /* Load NavBar */
+    const navbarJsonPath = path.join(
+      config.CONTENT_FOLDER,
+      lang.id,
+      "navbar.json"
+    );
+
+    const navBarButtons = fs.readJSONSync(navbarJsonPath, {
+      encoding: "utf-8",
+      throws: false,
+    });
+
     /* Generate Sidebar */
     let sidebar = [];
     const sidebarTemplatePath = path.join(
@@ -101,6 +113,19 @@ async function makeDocPages() {
       let dom = new JSDOM(template);
       const el = dom.window.document.getElementById("content");
       el.innerHTML = document.html;
+
+      /* Load and process Navbar template */
+      let navBarTemplate = fs.readFileSync(
+        path.join("src", "client", "navbar.html"),
+        {
+          encoding: "utf-8",
+        }
+      );
+
+      navbarVariables = { ...variables, buttons: navBarButtons };
+      navBarTemplate = Mustache.render(navBarTemplate, navbarVariables);
+      const navbarElement = dom.window.document.getElementById("navbar");
+      navbarElement.innerHTML = navBarTemplate;
 
       /* Set up metadata */
       dom.window.document.title = document.data.title;

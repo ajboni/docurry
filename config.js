@@ -30,9 +30,8 @@ exports.config = {
   /* Should we show the default language doc if the localized version cannot be found ? */
   FALLBACK_TO_DEFAULT_LANGUAGE: true,
 
-  /* Debug section */
-  DEBUG_PRINT_GENERATED_SITEMAP: true,
-  DEBUG_PRINT_CRAWLED_FILES: true,
+  /* Enable site-wide searching */
+  ENABLE_SEARCH: true,
 
   /* Autogenerate sidebar content for documents */
   AUTO_GENERATE_SIDEBAR: true,
@@ -40,6 +39,7 @@ exports.config = {
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
 
+  /* Include a language selector on landing page and docs */
   ADD_LANGUAGE_SELECTOR: true,
 
   /* File contents of this list will be available for use as a variable in a template or markdown as {{filepath}} */
@@ -47,4 +47,8 @@ exports.config = {
 
   /* Whether to strip .html extension in generated links (sidebar) (eg: /en/docs/tutorial.html => /en/docs/tutorial ) */
   REMOVE_EXTENSION_FROM_LINKS: false,
+
+  /* Debug section */
+  DEBUG_PRINT_GENERATED_SITEMAP: true,
+  DEBUG_PRINT_CRAWLED_FILES: true,
 };
