@@ -49,7 +49,7 @@
   bottom: 1.5rem;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   position: fixed;
   top: 3.5rem;
   width: 12rem;
@@ -101,8 +101,9 @@
 .docs-content img {
   max-width: 100%;
   height: auto;
-  margin: 2rem auto;
-  display: block;
+  //   margin: 2rem auto;
+  //   display: block;
+  border-radius: 4px;
 }
 
 .docs-content > .container {

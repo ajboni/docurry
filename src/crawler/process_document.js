@@ -44,6 +44,7 @@ var md = require("markdown-it")({
     externalRel: "noopener noreferrer",
     externalTarget: "_blank",
   })
+  .use(require("markdown-it-emoji"), [])
   .use(require("markdown-it-task-lists"), {
     label: true,
   });
