@@ -56,6 +56,7 @@ async function makeDocPages() {
     ];
 
     const files = glob.sync(docsGlob, { ignore: ignoreGlob, nosort: true });
+    files.sort();
 
     files.forEach((file) => {
       const type = fs.statSync(file).isFile()
