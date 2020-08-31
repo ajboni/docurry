@@ -39,11 +39,11 @@ var md = require("markdown-it")({
     // permalinkSpace: true,
     permalinkBefore: true,
   })
-  .use(require("markdown-it-external-links"), {
-    externalClassName: null,
-    externalRel: "noopener noreferrer",
-    externalTarget: "_blank",
-  })
+  //   .use(require("markdown-it-external-links"), {
+  //     externalClassName: null,
+  //     externalRel: "noopener noreferrer",
+  //     externalTarget: "_blank",
+  //   })
   .use(require("markdown-it-emoji"), [])
   .use(require("markdown-it-task-lists"), {
     label: true,
