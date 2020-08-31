@@ -8,9 +8,11 @@
 @import "node_modules/highlight.js/scss/github.scss";
 
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
-.version::after {
-  content: "0.5.9";
+
+.off-canvas {
+  height: unset;
 }
+
 .off-canvas .off-canvas-toggle {
   font-size: 1rem;
   left: 1.5rem;
@@ -95,6 +97,14 @@
   width: calc(100vw - 12rem);
   margin-top: 4rem;
 }
+
+.docs-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+}
+
 .docs-content > .container {
   margin-left: 0;
   max-width: 800px;
@@ -285,30 +295,7 @@
 .docs-footer a {
   color: #66758c;
 }
-.docs-ad {
-  background: #f7f8f9;
-  border-radius: 0.1rem;
-  display: block;
-  margin: 2rem 0;
-  padding: 0.4rem;
-  position: relative;
-}
-.docs-ad ins {
-  line-height: 1;
-  vertical-align: middle;
-}
-.docs-ad .carbon-wrap .carbon-img {
-  display: block;
-}
-.docs-ad .carbon-wrap .carbon-text {
-  color: #66758c;
-  display: block;
-  font-size: 0.7rem;
-}
-.docs-ad .carbon-poweredby {
-  color: #bcc3ce;
-  font-size: 0.7rem;
-}
+
 .section-hero {
   padding: 1rem 0.5rem;
 }
@@ -403,7 +390,7 @@
   .docs-navbar {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background: rgba(247, 248, 249, 0.65);
+    background: rgb(251, 251, 251);
     left: 0;
   }
   .docs-content {

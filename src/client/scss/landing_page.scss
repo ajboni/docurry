@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: start;
   padding: 1rem;
+  overflow: scroll;
 }
 
 .cover::after {
@@ -101,7 +102,7 @@
 }
 
 .cover h5 {
-  font-size: 10rem !important;
+  font-size: 30vmin !important;
   margin: 0 !important;
   line-height: 1 !important;
 }
