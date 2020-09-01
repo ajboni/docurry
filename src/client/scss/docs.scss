@@ -766,3 +766,37 @@ img.emoji {
   all: unset;
   height: 1.2em;
 }
+
+/* Language Selector */
+
+.docs-navbar .popover .popover-container {
+  width: 170px !important;
+  transition: 0s all 0.2s;
+}
+
+.docs-navbar .language-selector {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+  background-color: white;
+  //   border: 1px solid rgb(238, 234, 234);
+  border: 1px solid $primary-color;
+  border-radius: 2px;
+}
+
+.docs-navbar .language-selector a {
+  display: flex;
+  column-gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.docs-navbar .language-selector a:hover {
+  background-color: $primary-color;
+  color: #fff !important;
+}
+
+.docs-navbar .popover.popover-left .popover-container {
+  left: 0;
+  bottom: 100% !important;
+  top: 0 !important;
+}

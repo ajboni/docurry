@@ -1,13 +1,14 @@
 > Warning: This project is WIP and contains undocumented and untested features
 
 # Docurry
+
 A spicy documentation site generator.
 
 ## Features
 
 - [x] Write content in pure markdown.
-- [x] Plain html output. Static. No routers
-- [x] Auto generate sidebar
+- [x] Plain HTML output. Static. No routers. No frameworks.
+- [x] Auto generate sidebar, landing page and favicons.
 - [x] Multi-language support
 - [ ] SEO Friendly
 - [ ] Mobile Friendly

@@ -2,6 +2,30 @@
   <i class="icon icon-menu"> </i>
 </a>
 <div class="btns d-flex">
+  {{#ADD_LANGUAGE_SELECTOR}}
+  <nav id="nav">
+    <div class="popover popover-left">
+      <button class="btn btn">
+        <img height="20" width="20" src="/img/icons/translate.svg" />
+      </button>
+      <div class="popover-container">
+        <div class="language-selector">
+          {{#LANGUAGES}}
+          <a class="text-dark" href="/{{id}}/docs">
+            <span class="flag-icon flag-icon-{{iso}}"></span>{{caption}}
+          </a>
+          {{/LANGUAGES}}
+        </div>
+      </div>
+    </div>
+  </nav>
+  {{/ADD_LANGUAGE_SELECTOR}}
+  <!--  -->
+  {{#buttons}}
+  <a class="btn {{class}}" href="{{url}}" target="__blank">{{caption}} </a>
+  {{/buttons}}
+  <!--  -->
+
   {{#ENABLE_SEARCH}}
   <span style="position: relative; display: inline-block; direction: ltr">
     <input
@@ -37,7 +61,4 @@
   </span>
   {{/ENABLE_SEARCH}}
   <!--  -->
-  {{#buttons}}
-  <a class="btn {{class}}" href="{{url}}" target="__blank">{{caption}} </a>
-  {{/buttons}}
 </div>

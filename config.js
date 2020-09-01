@@ -27,6 +27,9 @@ exports.config = {
     { id: "es", caption: "Español", iso: "es" },
   ],
 
+  /* Include a language selector on landing page and docs */
+  ADD_LANGUAGE_SELECTOR: true,
+
   /* Should we show the default language doc if the localized version cannot be found ? */
   FALLBACK_TO_DEFAULT_LANGUAGE: true,
 
@@ -38,9 +41,6 @@ exports.config = {
 
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
-
-  /* Include a language selector on landing page and docs */
-  ADD_LANGUAGE_SELECTOR: true,
 
   /* File contents of this list will be available for use as a variable in a template or markdown as {{filepath}} */
   EXTRA_FILES_AS_VARIABLES: ["README.md"],
