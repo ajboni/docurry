@@ -111,7 +111,7 @@ async function makeDocPages() {
       template = Mustache.render(template, variables);
 
       let dom = new JSDOM(template);
-      const el = dom.window.document.getElementById("content");
+      const el = dom.window.document.getElementById("content-container");
       el.innerHTML = document.html;
 
       /* Load and process Navbar template */
@@ -124,7 +124,9 @@ async function makeDocPages() {
 
       navbarVariables = { ...variables, buttons: navBarButtons };
       navBarTemplate = Mustache.render(navBarTemplate, navbarVariables);
-      const navbarElement = dom.window.document.getElementById("navbar");
+      const navbarElement = dom.window.document.getElementById(
+        "navbar-container"
+      );
       navbarElement.innerHTML = navBarTemplate;
 
       /* Set up metadata */

@@ -28,7 +28,7 @@ exports.makeSidebars = function () {
       const content = readFileSync(page, { encoding: "utf-8" });
 
       let dom = new JSDOM(content);
-      const el = dom.window.document.getElementById("sidebar");
+      const el = dom.window.document.getElementById("sidebar-container");
 
       /* Get relative path and mark JSON item as expanded */
       const relPath = page.replace(path.normalize(config.BUILD_FOLDER), "");

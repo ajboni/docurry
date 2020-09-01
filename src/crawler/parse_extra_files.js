@@ -5,7 +5,7 @@ const matter = require("gray-matter");
 const path = require("path");
 var md = require("markdown-it")({
   html: true,
-  //   linkify: true,
+  linkify: true,
   //   typography: true,
 })
   .use(require("markdown-it-imsize"), { autofill: true })

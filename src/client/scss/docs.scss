@@ -7,6 +7,22 @@
 @import "node_modules/spectre.css/src/spectre-icons.scss";
 @import "node_modules/highlight.js/scss/github.scss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+.docs-content h1 {
+  font-size: 1.8rem;
+}
+
+.docs-content h2 {
+  font-size: 1.4rem;
+}
+
+ol {
+  list-style: decimal;
+}
+
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
 
 .off-canvas {
@@ -105,7 +121,8 @@
   //   margin: 2rem auto;
   //   display: block;
   border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  //   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   margin: 1rem 0;
 }
 
@@ -113,17 +130,6 @@
   margin-left: 0;
   max-width: 800px;
   padding-bottom: 1.5rem;
-}
-.docs-content .anchor {
-  color: #6362dc;
-  display: none;
-  margin-left: 0.2rem;
-  padding: 0 0.2rem;
-}
-.docs-content .anchor:focus,
-.docs-content .anchor:hover {
-  display: inline;
-  text-decoration: none;
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -627,14 +633,19 @@ li.task-list-item {
 // This could be MUCH better
 .header-anchor {
   font-size: 0.8em;
-  vertical-align: middle;
+  //   vertical-align: middle;
+  color: rgb(190, 186, 186);
   opacity: 0;
-  color: #666;
-  opacity: 0;
-  position: absolute;
-  left: -2.5ch;
-  padding: 0 1ch;
-  bottom: 0.2em;
+  //   position: absolute;
+  //   left: -10px;
+  //   padding: 0 1ch;
+  //   bottom: 0;
+  //   padding-right: 4px;
+  //   margin-left: -10px;
+}
+
+.header-anchor:visited {
+  color: rgb(190, 186, 186);
 }
 
 .header-anchor:hover {
@@ -690,15 +701,68 @@ blockquote {
   margin: 0%;
 }
 
-/* End of customization, do not edit below. */
-
-// Import full Spectre source code
-
-/* Import github styles */
 code,
 kbd,
 pre,
 samp {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 0.7rem;
+}
+
+/* Table styles */
+
+table {
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+}
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr th :first-child,
+table tr td :first-child {
+  margin-top: 0;
+}
+table tr th :last-child,
+table tr td :last-child {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+img.emoji {
+  all: unset;
+  height: 1.2em;
 }
