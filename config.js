@@ -39,6 +39,9 @@ exports.config = {
   /* Autogenerate sidebar content for documents */
   AUTO_GENERATE_SIDEBAR: true,
 
+  /* Add Table Of contents widget on doc page.*/
+  ADD_TOC: false,
+
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
 

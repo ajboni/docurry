@@ -120,16 +120,40 @@ ol {
   padding: 0.25rem 0.1rem;
 }
 
-.docs-content {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 0 4rem;
+.content-container {
+  padding: 0;
   width: calc(100vw - 12rem);
   margin-top: 4rem;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+}
+
+.docs-content {
+  flex-grow: 1;
+  margin-right: 4rem;
+  margin-left: 4rem;
+}
+
+.docs-toc {
+  max-width: 25%;
+  min-width: 25%;
+  padding: 2rem;
+  max-width: 20%;
+  padding: 0.5rem;
+
+  position: sticky;
+  align-self: flex-start;
+  overflow-y: auto;
+  display: block;
+  top: 90px;
+  //   min-height: calc(100vh - 6rem);
+  max-height: calc(100vh - 5rem);
+  border-left: 1px solid #e0e0e0;
+  font-size: 0.65rem;
 }
 
 .docs-content img {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   //   margin: 2rem auto;
   //   display: block;
@@ -151,7 +175,7 @@ ol {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 99;
+    // z-index: 99;
   }
   .docs-content h2::before,
   .docs-content h1::before {
@@ -418,10 +442,17 @@ ol {
     background: rgb(251, 251, 251);
     left: 0;
   }
+  .content-container {
+    min-width: auto;
+    width: 100%;
+  }
+
   .docs-content {
     min-width: auto;
     padding: 0 1.5rem;
     width: 100%;
+    margin-right: 0rem;
+    margin-left: 0rem;
   }
   .docs-content h2,
   .docs-content h1 {
@@ -447,6 +478,14 @@ ol {
   }
   .section-hero .s-brand h2 {
     display: none;
+  }
+
+  .docs-toc {
+    display: none;
+  }
+
+  .docs-content img {
+    max-width: 100%;
   }
 }
 @media (max-width: 600px) {

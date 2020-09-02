@@ -22,8 +22,21 @@
       <a class="off-canvas-overlay" href="#close"></a>
 
       <div class="off-canvas-content">
-        <div class="docs-content" id="content-container">
-          <!-- Docs content HERE (id='content') -->
+        <div class="content-container" id="content-container">
+          <div class="docs-content" id="docs-content-container">
+            <!-- Docs content HERE (id='docs-content-container') -->
+          </div>
+
+          {{#ADD_TOC}}
+          <nav class="docs-toc" id="toc-container">
+            <!-- Docs Toc HERE (id='content') -->
+            <ul>
+              <li>Lorem, ipsum dolor.</li>
+              <li>1Lorem, ipsum dolor2 1 231</li>
+              <li>Lorem, ipsum dolor231</li>
+            </ul>
+          </nav>
+          {{/ADD_TOC}}
         </div>
       </div>
     </div>
