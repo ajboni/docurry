@@ -71,6 +71,12 @@ ol {
   top: 3.5rem;
   width: 12rem;
 }
+
+.docs-sidebar .docs-nav .icon {
+  height: 1.2em;
+  font-size: 0.8em;
+}
+
 .docs-sidebar .accordion {
   margin-bottom: 0.75rem;
 }
@@ -84,11 +90,18 @@ ol {
   color: #505c6e;
 }
 
+.docs-sidebar
+  .accordion-body
+  .accordion-container
+  .accordion
+  .accordion-header {
+  font-size: 0.6rem;
+}
+
 .docs-sidebar .docs-nav > .menu-item {
   margin: 0;
   list-style-type: none;
   padding: 0.2rem 0.4rem;
-  margin-bottom: 0.75rem;
   font-size: 0.7rem;
 }
 .accordion .accordion {
@@ -97,14 +110,14 @@ ol {
 
 .docs-sidebar .accordion .menu .menu-item {
   font-size: 0.7rem;
-  padding-left: 0.4rem;
+  padding-left: 3ch;
 }
 .docs-sidebar .accordion .menu .menu-item > a,
 .docs-sidebar .docs-nav > .menu-item > a {
   background: 0 0;
   color: #66758c;
   display: inline-block;
-  padding: 0.4rem;
+  padding: 0.25rem 0.1rem;
 }
 
 .docs-content {
@@ -242,6 +255,7 @@ ol {
 .docs-content .example-tile-icon .icon {
   margin: auto;
 }
+
 .docs-content .comparison-slider {
   height: auto;
   padding-bottom: 56.2222%;
@@ -378,6 +392,7 @@ ol {
   font-weight: 700;
   margin-bottom: 0;
 }
+
 @media (max-width: 960px) {
   .off-canvas .off-canvas-toggle {
     z-index: 300;
