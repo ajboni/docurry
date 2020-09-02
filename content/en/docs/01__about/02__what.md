@@ -1,6 +1,6 @@
 # What?
 
-Docurry is an extremely simple, zero-config documentation website generator.
+Docurry is an extremely simple, very opinionated, zero-config documentation website generator.
 The idea is that you focus on writing the content and let the presentation be generated automatically.
 
 Its main features are:
@@ -12,4 +12,4 @@ Its main features are:
 - Supports multiple languages.
 - Blazing fast.
 - Syntax Highlighting.
-- Autogenerate Sidebar, favicons, and Landing pages.
+- Auto-generate Sidebar, favicons, and Landing pages.
