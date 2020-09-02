@@ -1,7 +1,7 @@
 exports.config = {
   /* Project Name and logo on the navbar. */
   PROJECT_NAME: "Docurry",
-  PROJECT_DESCRIPTION: "A spicy documentation site generator.",
+  PROJECT_DESCRIPTION: "A spicy, zero-config documentation site generator.",
 
   /* Folder where src docs are located. */
   CONTENT_FOLDER: "./content",

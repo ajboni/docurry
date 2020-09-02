@@ -1,6 +1,6 @@
 # Variables to use in Markdown
 
-You can use [mustache](https://github.com/janl/mustache.js) to access some of the data: the sintaxis is the variable enclosed in double curly braces `{ { var } }`.
+You can use [mustache](https://github.com/janl/mustache.js) to access some of the data: the syntax is the variable enclosed in double curly braces `{ { var } }`.
 
 1. All metadata from the frontmatter is available.
 2. All settings of `config.js` are available

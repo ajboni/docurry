@@ -7,7 +7,7 @@ Assuming the site url is localhost and we are editing a src file located at `con
 > This only applies to `<a>` tags
 
 ```Markdown
-[Relative](new-link) => will be converted to en/docs/about/test/new-link
+[Relative](new-link) => will be converted to localhost/en/docs/about/test/new-link
 [Absolute](/new-link) => will be converted to localhost/new-link
 [Pseudo Absolute](//new-link) => will be converted to localhost/en/new-link
 [Explicit Absolute](http://localhost/en/new-link) => will be kept intact.

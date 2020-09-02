@@ -1,6 +1,7 @@
 const { crawl } = require("./src/crawler/crawl");
 const chokidar = require("chokidar");
 const { copyMedia } = require("./src/crawler/copy_media");
+const { config } = require("./config");
 
 /* Set up dev live-reload */
 crawl();
@@ -28,7 +29,7 @@ function setUpLiveReload() {
       });
 
     chokidar
-      .watch("./content", { ignoreInitial: true })
+      .watch(config.CONTENT_FOLDER, { ignoreInitial: true })
       .on("all", (event, path) => {
         console.log(event, path);
         crawl();
