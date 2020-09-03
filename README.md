@@ -15,5 +15,6 @@ A spicy, zero-config documentation site generator.
 - [ ] Auto generate search
 - [x] Auto generate landing page.
 - [ ] Live Reload (WIP)
+- [ ] Zero Config!
 
 Docurry is VERY inspired [Docsify](https://github.com/docsifyjs/) and EXTREMELY based on the [Spectre Doc Site](https://picturepan2.github.io/spectre/getting-started.html)

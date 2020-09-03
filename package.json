@@ -4,7 +4,7 @@
   "description": "A spicy, zero-config static documentation site generator.",
   "main": "index.js",
   "scripts": {
-    "dev": "rm -rf ./build && NODE_ENV=development concurrently --names \"build,webserver\" \"npm:build\" \"wait-on ./build/.build.log && npx live-server --no-browser ./build\"",
+    "dev": "clear && rm -rf ./build && NODE_ENV=development concurrently --names \"build,webserver\" \"npm:build\" \"wait-on ./build/.build.log && npx live-server --no-browser ./build\"",
     "build": "node build.js"
   },
   "keywords": [

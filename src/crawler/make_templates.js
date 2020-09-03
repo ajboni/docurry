@@ -90,7 +90,9 @@ async function makeFavicons() {
   };
 
   const cachePath = path.join(".cache", "favicons");
-  const cacheImgPath = path.join(cachePath, "favicons");
+  const cacheImgPath = cachePath;
+
+  //   const cacheImgPath = path.join(cachePath, "favicons");
   const cacheHeadPath = path.join(cachePath, "faviconsData.json");
   try {
     if (
@@ -125,8 +127,10 @@ async function makeFavicons() {
     logError(error);
   }
 
+  ensureDirSync(path.join(config.BUILD_FOLDER, "favicons"));
+
   /* Copy the favicons cache to the build folder */
-  copySync(cachePath, config.BUILD_FOLDER, {
+  copySync(cachePath, path.join(config.BUILD_FOLDER, "favicons"), {
     recursive: true,
   });
 

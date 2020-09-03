@@ -13,13 +13,13 @@ setUpLiveReload();
  */
 function setUpLiveReload() {
   if (process.env.NODE_ENV === "development") {
-    // One-liner for current directory
-    chokidar
-      .watch("./src", { ignoreInitial: true })
-      .on("all", (event, path) => {
-        crawl();
-        console.log(event, path);
-      });
+    // TODO:
+    // chokidar
+    //   .watch("./src", { ignoreInitial: true })
+    //   .on("all", (event, path) => {
+    //     crawl();
+    //     console.log(event, path);
+    //   });
 
     chokidar
       .watch("./config.js", { ignoreInitial: true })
