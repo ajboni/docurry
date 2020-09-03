@@ -1,5 +1,5 @@
 const { JSDOM } = require("jsdom");
-const { logTitle } = require("../utils/log");
+const { logTitle, logOK } = require("../utils/log");
 const { readFileSync, writeFileSync, read } = require("fs");
 const { config } = require("../../config");
 const { glob } = require("glob");
@@ -51,12 +51,7 @@ exports.makeSidebars = function () {
 
       writeFileSync(page, dom.serialize());
     });
-
-    // console.log(tree);
-    // const files = glob.sync(docsGlob, { ignore: ignoreGlob });
-    // files.forEach((file) => {
-    //   console.log(path.relative(docsFolder, path.dirname(file)));
-    // });
+    logOK(`Generated ${pages.length} sidebar entries for ${lang.caption}`);
   });
 };
 

@@ -65,8 +65,14 @@ exports.processDocument = function (filePath, lang, extraFiles = {}) {
   let document = matter(indexContentMD);
 
   /* Process Extra Files */
-  if (extraFiles)
+  if (extraFiles) {
     document.content = Mustache.render(document.content, extraFiles);
+    // To support JS
+    const Entities = require("html-entities").XmlEntities;
+    const entities = new Entities();
+
+    document.content = entities.decode(document.content);
+  }
 
   /* Render Markdown */
   document.html = md.render(document.content);

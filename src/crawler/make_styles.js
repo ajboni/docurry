@@ -16,6 +16,7 @@ exports.makeStyles = function () {
   const files = glob.sync("src/client/**/*.scss");
   try {
     files.forEach((srcPath) => {
+      if (getFilenameFromPath(srcPath, false).startsWith("_")) return;
       const dstPath = path.join(
         config.BUILD_FOLDER,
         "css",

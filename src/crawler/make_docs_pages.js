@@ -148,6 +148,7 @@ async function makeDocPages() {
     );
 
     //   fs.writeFileSync("./build/en/docs/index.html", template);
+    logOK(`Generated ${files.length} doc pages for ${lang.caption}`);
   });
 }
 module.exports.makeDocPages = makeDocPages;

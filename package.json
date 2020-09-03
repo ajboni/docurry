@@ -28,6 +28,7 @@
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "highlight.js": "^10.1.2",
+    "html-entities": "^1.3.1",
     "jimp": "^0.16.1",
     "jsdom": "^16.4.0",
     "live-server": "1.2.1",
