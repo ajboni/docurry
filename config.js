@@ -8,7 +8,6 @@ exports.config = {
 
   /* Images, relative to CONTENT_FOLDER  */
   PROJECT_LOGO: "img/logo.png",
-  FAVICON: "img/logo.png",
 
   /*   Folder where built files will be located. */
   BUILD_FOLDER: "./build",

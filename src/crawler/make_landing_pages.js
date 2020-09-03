@@ -107,7 +107,6 @@ function makeLandingPageBackground() {
             image.quality(75);
             // image.resize(1200, 768);
             image.write(dstPath);
-            fs.unlinkSync(".temp/bg.png");
           }
         });
       });

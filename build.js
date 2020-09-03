@@ -2,7 +2,8 @@ const { crawl } = require("./src/crawler/crawl");
 const chokidar = require("chokidar");
 const { copyMedia } = require("./src/crawler/copy_media");
 const { config } = require("./config");
-
+const { makeStyles } = require("./src/crawler/make_styles");
+const path = require("path");
 /* Set up dev live-reload */
 crawl();
 setUpLiveReload();
@@ -20,6 +21,13 @@ function setUpLiveReload() {
     //     crawl();
     //     console.log(event, path);
     //   });
+
+    /* Watch CSS Folder */
+    chokidar
+      .watch(path.join("src", "client", "scss"), { ignoreInitial: true })
+      .on("all", (event, path) => {
+        makeStyles();
+      });
 
     chokidar
       .watch("./config.js", { ignoreInitial: true })

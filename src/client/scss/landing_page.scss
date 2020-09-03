@@ -120,7 +120,7 @@
 }
 
 .cover nav {
-  align-self: end;
+  align-self: flex-end;
 }
 
 .cover .popover .popover-container {
@@ -144,7 +144,6 @@
   flex-direction: column;
   row-gap: 0.2rem;
   background-color: white;
-  //   border: 1px solid $primary-color;
   border-radius: 2px;
 }
 
