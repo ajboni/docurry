@@ -90,9 +90,9 @@ function makeLandingPageBackground() {
     }
   } else {
     const canvas = trianglify({
-      width: 1920,
-      height: 1080,
-      cellSize: getRandomInt(75, 300),
+      width: 1200,
+      height: 768,
+      cellSize: getRandomInt(100, 250),
     }).toCanvas();
 
     try {
@@ -104,8 +104,8 @@ function makeLandingPageBackground() {
           if (err) {
             console.log(err);
           } else {
-            image.quality(75);
             // image.resize(1200, 768);
+            image.quality(80);
             image.write(dstPath);
           }
         });

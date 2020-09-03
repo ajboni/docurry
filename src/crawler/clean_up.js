@@ -9,7 +9,7 @@ async function cleanUp() {
 
   const purgeCSSResult = await new PurgeCSS().purge({
     content: [`${config.BUILD_FOLDER}/**/*.html`],
-    css: [`${config.BUILD_FOLDER}/css/*.css`],
+    css: [`${config.BUILD_FOLDER}/css/**/*.css`],
     rejected: true,
   });
 

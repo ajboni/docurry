@@ -3,7 +3,7 @@ title: Docurry
 description: A Spicy, Zero-Config Documentation Site Generator.
 ---
 
-![Docurry Logo](img/logo.png)
+![Docurry Logo](/img/logo.png)
 
 # Docurry
 

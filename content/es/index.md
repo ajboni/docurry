@@ -3,11 +3,11 @@ title: Docurry - Un generador de sitios estáticos de documentación.
 description: Un generador de sitios estáticos de documentación.
 ---
 
-##### 🍛
+![Docurry Logo](/img/logo.png)
 
 # Docurry
 
-El generador de sitios estáticos de documentación mas sabroso.
+Un sabroso generador de sitios estáticos de documentación.
 
 - [Docs (Inglés)](/en/docs/)
 - [Github](https://github.com/ajboni/docurry)

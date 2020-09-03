@@ -62,7 +62,7 @@ async function makeFavicons() {
     display: "standalone", // Preferred display mode: "fullscreen", "standalone", "minimal-ui" or "browser". `string`
     orientation: "any", // Default orientation: "any", "natural", "portrait" or "landscape". `string`
     scope: "/", // set of URLs that the browser considers within your app
-    start_url: "/?homescreen=1", // Start URL when launching the application from a device. `string`
+    start_url: "/", // Start URL when launching the application from a device. `string`
     version: "1.0", // Your application's version string. `string`
     logging: false, // Print logs to console? `boolean`
     pixel_art: false, // Keeps pixels "sharp" when scaling up, for pixel art.  Only supported in offline mode.
