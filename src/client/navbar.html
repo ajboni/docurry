@@ -1,12 +1,21 @@
-<a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar-container">
+<a
+  class="off-canvas-toggle btn btn-link btn-action"
+  href="#sidebar-container"
+  aria-label="Toggle Sidebar"
+>
   <i class="icon icon-menu"> </i>
 </a>
 <div class="btns d-flex">
   {{#ADD_LANGUAGE_SELECTOR}}
   <nav id="nav">
     <div class="popover popover-left">
-      <button class="btn btn">
-        <img height="20" width="20" src="/img/icons/translate.svg" />
+      <button class="btn btn" aria-label="Translations">
+        <img
+          height="20"
+          width="20"
+          src="/img/icons/translate.svg"
+          alt="Translations"
+        />
       </button>
       <div class="popover-container">
         <div class="language-selector">

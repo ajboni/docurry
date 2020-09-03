@@ -8,3 +8,8 @@
 $primary-color: #f88501e1;
 $code-color: #525258;
 $warning-color: #ffebd5a9;
+
+// Make all links same color
+$link-color: $primary-color;
+$link-color-dark: $link-color;
+$link-color-light: $link-color;

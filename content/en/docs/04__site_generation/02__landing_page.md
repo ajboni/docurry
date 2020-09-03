@@ -28,3 +28,13 @@ Example:
 - [Github](https://github.com/ajboni/docurry)
 
 ```
+
+## Background Generation
+
+If you want to provide your own background set the path on `config.LANDING_PAGE_BG`. It will be converted to jpg and copied to `BUILD_FOLDER/img/bg.jpg`
+
+If you set `config.LANDING_PAGE_BG` to `auto` Docurry will auto generate the background using [trianglify](https://github.com/qrohlf/trianglify)
+
+> Make sure to read [trianglify license](https://github.com/qrohlf/trianglify#licensing) and make sure your project complies with it.
+
+Each time the site is built, a new background will be generated.

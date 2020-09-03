@@ -11,6 +11,7 @@ const { JSDOM } = require("jsdom");
 
 const { processDocument } = require("./process_document");
 const { parseExtraFiles } = require("./parse_extra_files");
+const Jimp = require("jimp");
 
 async function makeLandingPages() {
   logTitle("Generate Landing Pages");
@@ -79,7 +80,7 @@ module.exports.makeLandingPages = makeLandingPages;
  * In either case a bg.png file is created in build/img
  */
 function makeLandingPageBackground() {
-  let dstPath = path.join(config.BUILD_FOLDER, "img", "bg.png");
+  let dstPath = path.join(config.BUILD_FOLDER, "img", "bg.jpg");
   if (config.LANDING_PAGE_BG !== "auto") {
     try {
       fs.copyFileSync(config.LANDING_PAGE_BG, dstPath);
@@ -95,8 +96,21 @@ function makeLandingPageBackground() {
     }).toCanvas();
 
     try {
-      const file = fs.createWriteStream(dstPath);
+      const file = fs.createWriteStream(".temp/bg.png");
       canvas.createPNGStream().pipe(file);
+      file.on("close", () => {
+        //   Compress background
+        Jimp.read(".temp/bg.png", function (err, image) {
+          if (err) {
+            console.log(err);
+          } else {
+            image.quality(75);
+            // image.resize(1200, 768);
+            image.write(dstPath);
+            fs.unlinkSync(".temp/bg.png");
+          }
+        });
+      });
       logOK(`Generated background and copied into: ${dstPath}`);
     } catch (error) {
       logError(error);
