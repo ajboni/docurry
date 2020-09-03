@@ -10,6 +10,7 @@ const { initBuildFolder } = require("./init_build_folder");
 const { makeTemplates } = require("./make_templates");
 const { makeDocPages } = require("./make_docs_pages");
 const { makeSidebars } = require("./make_sidebar");
+const { cleanUp } = require("./clean_up");
 const { BUILD_FOLDER } = config;
 
 async function crawl() {
@@ -35,6 +36,9 @@ async function crawl() {
 
   /* Process Sidebar */
   makeSidebars();
+
+  /* Clean UP */
+  await cleanUp();
 
   /* Build Completed */
   const elapsed = timeElpasedInSeconds(startTime, new Date());

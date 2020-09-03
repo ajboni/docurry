@@ -10,11 +10,12 @@ A spicy, zero-config documentation site generator.
 - [x] Plain HTML output. Static. No routers. No frameworks.
 - [x] Auto generate sidebar, landing page and favicons.
 - [x] Multi-language support
-- [ ] SEO Friendly
-- [ ] Mobile Friendly
+- [x] SEO Friendly
+- [x] Mobile Friendly
 - [ ] Auto generate search
 - [x] Auto generate landing page.
 - [ ] Live Reload (WIP)
-- [ ] Zero Config!
+- [x] Zero Config.
+- [x] 🚀 Blazing fast! 🚀
 
 Docurry is VERY inspired [Docsify](https://github.com/docsifyjs/) and EXTREMELY based on the [Spectre Doc Site](https://picturepan2.github.io/spectre/getting-started.html)

@@ -43,6 +43,7 @@
     "mustache": "^4.0.1",
     "node-sass": "^4.14.1",
     "pretty": "^2.0.0",
+    "purgecss": "^2.3.0",
     "spectre.css": "^0.5.9",
     "trianglify": "^4.0.0",
     "twemoji": "^13.0.1",
