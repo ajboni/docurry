@@ -1,6 +1,6 @@
 ---
 title: Docurry
-description: A spicy documentation site generator.
+description: A spicy, zero-config documentation site generator.
 ---
 
 {{README_md}}

@@ -1,6 +1,6 @@
 # Docurry
 
-A spicy documentation site generator.
+A spicy, zero-config documentation site generator.
 
 ## Features
 

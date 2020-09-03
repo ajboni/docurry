@@ -16,7 +16,7 @@ Example:
 
 # Docurry
 
-> A spicy documentation site generator.
+> A spicy, zero-config documentation site generator.
 
 1. Simple and fast.
 2. Statically built HTML. No router.
