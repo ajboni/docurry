@@ -8,6 +8,9 @@ const { JSDOM } = require("jsdom");
 const twemoji = require("twemoji");
 const v = require("voca");
 const hljs = require("highlight.js");
+const htmlToText = require("html-to-text");
+const { basename } = require("path");
+const { replaceAll, titleCase } = require("voca");
 
 var md = require("markdown-it")({
   html: true,
@@ -57,12 +60,34 @@ md.renderer.rules.emoji = function (token, idx) {
  * @param {Filepath} filePath
  * @returns An object with: content, data, html properties.
  */
-exports.processDocument = function (filePath, lang, extraFiles = {}) {
+exports.processDocument = function (
+  filePath,
+  lang,
+  extraFiles = {},
+  targetPath
+) {
   const fallbackTitle = captionFromPath(filePath);
   const indexContentMD = readFileSync(filePath, { encoding: "utf-8" });
 
   /* Process Frontmatter */
-  let document = matter(indexContentMD);
+  document = matter(indexContentMD);
+
+  /* Add base properties */
+  document.buildPath = targetPath;
+
+  document.lang = lang;
+  document.url = config.REMOVE_EXTENSION_FROM_LINKS
+    ? "/" +
+      changeFileExtension(
+        path.relative(config.BUILD_FOLDER, document.buildPath),
+        ""
+      )
+    : "/" + path.relative(config.BUILD_FOLDER, document.buildPath);
+
+  document.name = basename(
+    document.buildPath,
+    path.extname(document.buildPath)
+  );
 
   /* Process Extra Files */
   if (extraFiles) {
@@ -85,9 +110,13 @@ exports.processDocument = function (filePath, lang, extraFiles = {}) {
   };
 
   if (!document.data.title) document.data.title = fallbackTitle;
+  if (!document.data.caption) document.data.caption = fallbackTitle;
 
   if (!document.data.description)
     document.data.description = config.PROJECT_DESCRIPTION;
+
+  document.title = document.data.title;
+  document.caption = document.data.caption;
 
   /* On Landing pages we will format the title differently */
   landingPagePath = path.join(config.CONTENT_FOLDER, lang.id, "index.md");
@@ -125,5 +154,15 @@ exports.processDocument = function (filePath, lang, extraFiles = {}) {
 
   /* Process HTML to replace variables */
   document.html = Mustache.render(document.html, document.data);
+  document.plainTextContent = htmlToText.fromString(document.html, {
+    format: {
+      anchor: function (el, fn, options) {
+        return "";
+      },
+    },
+  });
+
   return document;
 };
+
+exports.processFolder = function (filePath, lang, extraFiles) {};

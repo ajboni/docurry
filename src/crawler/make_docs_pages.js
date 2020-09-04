@@ -89,11 +89,14 @@ async function makeDocPages() {
         : targetPath;
       targetPath = removeSortingPrefix(targetPath);
 
-      /* Add to sidebar */
-      addPathToSidebar(targetPath, sidebar, type, lang);
-
       /* We will only continue with markdown files */
-      if (type !== "File") return;
+      if (type !== "File") {
+        /* Add  Folder to sidebar */
+        addFolderToSidebar(targetPath, sidebar, lang);
+        return;
+      }
+
+      /* PROCESS DOCUMENT */
 
       ensureFileSync(targetPath);
 
@@ -103,7 +106,7 @@ async function makeDocPages() {
       });
 
       /* Process Document */
-      const document = processDocument(file, lang, extraFiles);
+      const document = processDocument(file, lang, extraFiles, targetPath);
 
       /* Replace variables in template */
 
@@ -136,6 +139,8 @@ async function makeDocPages() {
         .setAttribute("content", document.data.description);
       const processedHTML = dom.serialize();
 
+      addDocumentToSidebar(document, sidebar);
+
       // 	/* Finally write the file */
       fs.writeFileSync(targetPath, processedHTML, { encoding: "utf-8" });
     });
@@ -153,38 +158,32 @@ async function makeDocPages() {
 }
 module.exports.makeDocPages = makeDocPages;
 
-function addPathToSidebar(targetPath, sidebar, type, lang) {
+function addFolderToSidebar(targetPath, sidebar, lang) {
   if (!config.AUTO_GENERATE_SIDEBAR) return;
 
-  let _path = config.REMOVE_EXTENSION_FROM_LINKS
+  let url = config.REMOVE_EXTENSION_FROM_LINKS
     ? changeFileExtension(path.relative(config.BUILD_FOLDER, targetPath), "")
     : path.relative(config.BUILD_FOLDER, targetPath);
 
-  const name = basename(_path, path.extname(_path));
+  const name = basename(url, path.extname(url));
   const caption = replaceAll(titleCase(name), /[-_]/, " ");
 
-  /* TODO: If type is file, load metadata to find possible caption. */
-  if (type === "File") {
-    // const content = fs.readFileSync();
-  }
-
   /* Make pseudo absolute */
-  _path = "/" + _path;
-  let parent = path.dirname(_path);
+  url = "/" + url;
+  let parent = path.dirname(url);
 
   const obj = {
     name,
     caption,
-    path: _path,
-    type,
+    url: url,
+    type: "Folder",
     parent,
     children: [],
-    isFolder: type === "Folder",
+    isFolder: true,
     checked: "", // This is needed because mustache will use parent context if the key is not found.
     isSelected: false, // Same as above.
   };
 
-  //   const parentObj = sidebar.find((x) => x.name === parent);
   const parentObj = findParentDeep(sidebar, parent);
 
   if (parentObj) {
@@ -200,11 +199,44 @@ function addPathToSidebar(targetPath, sidebar, type, lang) {
   }
 }
 
+function addDocumentToSidebar(document, sidebar) {
+  if (!config.AUTO_GENERATE_SIDEBAR) return;
+
+  /* Make pseudo absolute */
+  let parent = path.dirname(document.url);
+
+  const obj = {
+    name: document.name,
+    caption: document.caption,
+    url: document.url,
+    type: "File",
+    parent,
+    children: [],
+    isFolder: false,
+    checked: "", // This is needed because mustache will use parent context if the key is not found.
+    isSelected: false, // Same as above.
+  };
+
+  const parentObj = findParentDeep(sidebar, parent);
+
+  if (parentObj) {
+    parentObj.children.push(obj);
+  } else {
+    if (
+      /* Index will be ommited in sidebar and accessed by the icon */
+      document.buildPath !==
+      path.join(config.BUILD_FOLDER, document.lang.id, "docs", "index.html")
+    ) {
+      sidebar.push(obj);
+    }
+  }
+}
+
 function findParentDeep(data, key) {
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
 
-    if (element.path === key) {
+    if (element.url === key) {
       return element;
     } else {
       const match = findParentDeep(element.children, key);

@@ -74,7 +74,7 @@ function expandSidebarTo(sidebar, docPath) {
 function getSidebarObjectDeep(sidebar, docPath) {
   for (let index = 0; index < sidebar.length; index++) {
     const element = sidebar[index];
-    if (element.path === docPath) {
+    if (element.url === docPath) {
       return element;
     } else {
       if (element.children && element.children.length > 0) {

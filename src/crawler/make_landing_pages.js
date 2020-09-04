@@ -32,9 +32,9 @@ async function makeLandingPages() {
       }
     }
 
-    const document = processDocument(indexPath, lang, extraFiles);
-
     let dstPath = path.join(config.BUILD_FOLDER, lang.id, "index.html");
+
+    const document = processDocument(indexPath, lang, extraFiles, dstPath);
 
     /* Concatenate with generated template */
     let template = fs.readFileSync(path.join(".temp", "landing_page.html"), {
