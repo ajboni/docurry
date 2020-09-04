@@ -13,7 +13,7 @@ exports.makeSidebars = function () {
 
   langs.forEach((lang, index) => {
     const docsFolder = path.join(config.BUILD_FOLDER, lang.id, "docs");
-    const jsonPath = path.join(config.BUILD_FOLDER, lang.id, "sidebar.json");
+    const jsonPath = path.join(".temp", lang.id, "sidebar.json");
     const sidebarTemplate = path.join("src", "client", "sidebar.html");
     const sidebarPartial = path.join("src", "client", "sidebar_item.html");
 

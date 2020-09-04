@@ -11,6 +11,7 @@ const { makeTemplates } = require("./make_templates");
 const { makeDocPages } = require("./make_docs_pages");
 const { makeSidebars } = require("./make_sidebar");
 const { cleanUp } = require("./clean_up");
+const { makeSearch } = require("./make_search");
 const { BUILD_FOLDER } = config;
 
 async function crawl() {
@@ -36,6 +37,9 @@ async function crawl() {
 
   /* Process Sidebar */
   makeSidebars();
+
+  /* Generate Search Indexes */
+  makeSearch();
 
   /* Clean UP */
   await cleanUp();

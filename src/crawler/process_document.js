@@ -106,6 +106,7 @@ exports.processDocument = function (
   document.data = {
     ...config,
     ...document.data,
+    LANG: lang,
     ROOT: `${lang.id}/docs/`,
   };
 
@@ -164,5 +165,3 @@ exports.processDocument = function (
 
   return document;
 };
-
-exports.processFolder = function (filePath, lang, extraFiles) {};

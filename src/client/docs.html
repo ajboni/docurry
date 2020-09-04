@@ -9,6 +9,7 @@
     </head>
     <link rel="stylesheet" href="/css/docs.css" />
     <link rel="preload" href="/css/flags-css/flag-icon.min.css" as="style" />
+    <link rel="preload" href="/js/lunr/lunr.min.js" as="script" />
     <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
   </head>
   <body>
@@ -41,5 +42,10 @@
         </div>
       </div>
     </div>
+
+    {{#ENABLE_SEARCH}}
+    <script src="/js/lunr/lunr.min.js"></script>
+    {{/ENABLE_SEARCH}}
+    <script src="/js/docs.js" data-lang="{{LANG.id}}"></script>
   </body>
 </html>

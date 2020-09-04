@@ -21,6 +21,8 @@ const {
 const { parseExtraFiles } = require("./parse_extra_files");
 const { basename, dirname } = require("path");
 const { titleCase, replaceAll } = require("voca");
+const { url } = require("inspector");
+const { makeSearch } = require("./make_search");
 
 async function makeDocPages() {
   logTitle("Generate Doc Pages");
@@ -41,8 +43,10 @@ async function makeDocPages() {
       throws: false,
     });
 
-    /* Generate Sidebar */
+    /* Generate Sidebar and search database*/
     let sidebar = [];
+    let searchDatabase = [];
+
     const sidebarTemplatePath = path.join(
       config.CONTENT_FOLDER,
       lang.id,
@@ -139,18 +143,33 @@ async function makeDocPages() {
         .setAttribute("content", document.data.description);
       const processedHTML = dom.serialize();
 
+      /* Add Doc to sidebar */
       addDocumentToSidebar(document, sidebar);
 
-      // 	/* Finally write the file */
+      if (config.ENABLE_SEARCH) {
+        /* Add Doc to Search Database */
+        addDocumentToSearchDatabase(document, searchDatabase);
+      }
+
+      /* Finally write the file */
       fs.writeFileSync(targetPath, processedHTML, { encoding: "utf-8" });
     });
 
     /* Write sidebar to target folder */
-    fs.writeFileSync(
-      path.join(config.BUILD_FOLDER, lang.id, "sidebar.json"),
+    fs.outputFileSync(
+      path.join(".temp", lang.id, "sidebar.json"),
       JSON.stringify(sidebar),
       { encoding: "utf-8" }
     );
+
+    /* Write search database to temp folder */
+    if (config.ENABLE_SEARCH) {
+      fs.outputFileSync(
+        path.join(".temp", lang.id, "searchDB.json"),
+        JSON.stringify(searchDatabase),
+        { encoding: "utf-8" }
+      );
+    }
 
     //   fs.writeFileSync("./build/en/docs/index.html", template);
     logOK(`Generated ${files.length} doc pages for ${lang.caption}`);
@@ -245,4 +264,14 @@ function findParentDeep(data, key) {
       }
     }
   }
+}
+
+function addDocumentToSearchDatabase(document, db) {
+  /* Pick wanted properties: https://stackoverflow.com/questions/17781472/how-to-get-a-subset-of-a-javascript-objects-properties */
+  const obj = (({ url, title, plainTextContent }) => ({
+    url,
+    title,
+    plainTextContent,
+  }))(document);
+  db.push(obj);
 }
