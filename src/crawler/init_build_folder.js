@@ -9,8 +9,10 @@ const { config } = require("../../config");
 const path = require("path");
 const { glob } = require("glob");
 const { basename } = require("path");
+const { logOK, logJob, logTitle } = require("../utils/log");
 
 exports.initBuildFolder = function () {
+  logTitle("Init Build Folder");
   removeSync(config.BUILD_FOLDER);
   removeSync(".temp");
   ensureDirSync(config.BUILD_FOLDER);
@@ -34,13 +36,17 @@ exports.initBuildFolder = function () {
     path.join(config.BUILD_FOLDER, "css", "flags")
   );
 
-  /* Copy lunr.js for Searches */
+  /* Copy elasticlunr.js for Searches */
   copySync(
-    path.join("node_modules", "lunr", "lunr.min.js"),
-    path.join(config.BUILD_FOLDER, "js", "lunr", "lunr.min.js")
+    path.join("node_modules", "elasticlunr", "elasticlunr.min.js"),
+    path.join(config.BUILD_FOLDER, "js", "elasticlunr", "elasticlunr.min.js")
   );
 
   /* Copy templates js */
+  exports.copyTemplatesJavascript();
+};
+
+exports.copyTemplatesJavascript = function () {
   const srcFolder = path.join("src", "client");
   const jsDstFolder = path.join(config.BUILD_FOLDER, "js");
   const jsGlob = `${srcFolder}/**/*.js`;
@@ -48,4 +54,5 @@ exports.initBuildFolder = function () {
   files.forEach((file) => {
     copySync(file, path.join(jsDstFolder, basename(file)));
   });
+  logOK(`${files.length} client javascript copied.`);
 };

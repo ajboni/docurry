@@ -38,6 +38,7 @@
   {{#ENABLE_SEARCH}}
   <span style="position: relative; display: inline-block; direction: ltr">
     <input
+      id="docs-search-input"
       class="docs-search form-input ds-input"
       type="text"
       placeholder="Search Docs"
@@ -52,15 +53,8 @@
     />
 
     <span
-      class="ds-dropdown-menu"
-      style="
-        position: absolute;
-        top: 100%;
-        z-index: 100;
-        display: none;
-        left: 0px;
-        right: auto;
-      "
+      id="docs-search-dropdown-menu"
+      class="docs-search-dropdown-menu"
       role="listbox"
     >
       <div class="ds-dataset-1"></div>

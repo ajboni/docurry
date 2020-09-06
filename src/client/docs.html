@@ -9,8 +9,11 @@
     </head>
     <link rel="stylesheet" href="/css/docs.css" />
     <link rel="preload" href="/css/flags-css/flag-icon.min.css" as="style" />
-    <link rel="preload" href="/js/lunr/lunr.min.js" as="script" />
+    <link rel="preload" href="/js/fuse/fuse.min.js" as="script" />
+
     <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   </head>
   <body>
     <div class="docs-container off-canvas off-canvas-sidebar-show">
@@ -44,8 +47,8 @@
     </div>
 
     {{#ENABLE_SEARCH}}
-    <script src="/js/lunr/lunr.min.js"></script>
+    <script src="/js/fuse/fuse.min.js"></script>
+    <script src="/js/docs-search.js" data-lang="{{LANG.id}}"></script>
     {{/ENABLE_SEARCH}}
-    <script src="/js/docs.js" data-lang="{{LANG.id}}"></script>
   </body>
 </html>

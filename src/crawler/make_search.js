@@ -1,6 +1,7 @@
 const { config } = require("../../config");
 const { readFileSync, outputFileSync } = require("fs-extra");
-const lunr = require("lunr");
+var elasticlunr = require("elasticlunr");
+const Fuse = require("fuse.js");
 const path = require("path");
 
 /**
@@ -19,20 +20,26 @@ exports.makeSearch = function () {
       })
     );
 
-    const idx = lunr(function () {
-      this.ref("url");
-      this.field("plainTextContent");
-      this.field("title");
-      this.metadataWhitelist = ["plainTextContent", "position"];
+    const options = { keys: ["plainTextContent", "title", "url"] };
+    const index = Fuse.createIndex(options.keys, docs);
 
-      docs.forEach(function (doc) {
-        this.add(doc);
-      }, this);
-    });
+    // const index = elasticlunr();
+    // index.addField("title");
+    // index.addField("plainTextContent");
+    // index.setRef("url");
+    // index.saveDocument(true);
+
+    // docs.forEach(function (doc) {
+    //   index.addDoc(doc);
+    // });
 
     outputFileSync(
       path.join(config.BUILD_FOLDER, lang.id, "searchIndex.json"),
-      JSON.stringify(idx)
+      JSON.stringify(index.toJSON())
+    );
+    outputFileSync(
+      path.join(config.BUILD_FOLDER, lang.id, "searchDatabase.json"),
+      JSON.stringify(docs)
     );
   });
 };
