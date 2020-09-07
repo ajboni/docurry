@@ -14,7 +14,7 @@ A spicy, zero-config documentation site generator.
 - [x] Mobile Friendly
 - [x] Auto generate search
 - [x] Auto generate landing page.
-- [ ] Live Reload (WIP)
+- [ ] Live Reload (Work in progress)
 - [x] Zero Config.
 - [x] 🚀 Blazing fast! 🚀
 

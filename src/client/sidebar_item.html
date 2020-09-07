@@ -1,6 +1,6 @@
 {{^isFolder}}
 <li class="menu-item">
-  <a href="{{url}}">
+  <a href="{{url}}" {{#target}}target={{target}} rel="noopener noreferrer"{{/target}}>
     {{#isSelected}}<strong>{{/isSelected}} {{caption}} {{#isSelected}} </strong
     >{{/isSelected}}</a
   >

@@ -76,6 +76,7 @@ exports.processDocument = function (
   document.buildPath = targetPath;
 
   document.lang = lang;
+
   document.url = config.REMOVE_EXTENSION_FROM_LINKS
     ? "/" +
       changeFileExtension(
@@ -112,6 +113,8 @@ exports.processDocument = function (
 
   if (!document.data.title) document.data.title = fallbackTitle;
   if (!document.data.caption) document.data.caption = fallbackTitle;
+  if (document.data.url) document.url = document.data.url;
+  if (document.data.target) document.target = document.data.target;
 
   if (!document.data.description)
     document.data.description = config.PROJECT_DESCRIPTION;
