@@ -8,12 +8,13 @@ A spicy, zero-config documentation site generator.
 
 - [x] Write content in pure markdown.
 - [x] Plain HTML output. Static. No routers. No frameworks.
-- [x] Auto generate sidebar, landing page and favicons.
 - [x] Multi-language support
 - [x] SEO Friendly
 - [x] Mobile Friendly
 - [x] Auto generate search
-- [x] Auto generate landing page.
+- [x] Auto generate landing page and favicons.
+- [x] Auto generate sidebar.
+- [ ] Auto generate Table of contents.
 - [ ] Live Reload (Work in progress)
 - [x] Zero Config.
 - [x] 🚀 Blazing fast! 🚀
