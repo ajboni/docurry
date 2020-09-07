@@ -53,11 +53,14 @@ async function loadSearchDatabase() {
   const fuseOptions = {
     includeScore: true,
     includeMatches: true,
-    // minMatchCharLength: 5,
-    threshold: 1,
     ignoreLocation: true,
-    // distance: 10
     useExtendedSearch: true,
+    // ignoreFieldNorm: true,
+    keys: [
+      { name: "plainTextContent", weight: 1 },
+      { name: "title", weight: 2 },
+      { name: "url", weight: 0.5 },
+    ],
   };
   const fuseIndex = Fuse.parseIndex(searchIndex);
   fuse = new Fuse(searchDatabase, fuseOptions, fuseIndex);
@@ -90,17 +93,21 @@ function search(str) {
 
       el.className = "search-result";
 
-      const title = document.createElement("div");
+      const title = document.createElement("a");
       title.className = "search-result-title";
       title.innerHTML = `${res.item.title}`;
+      title.href = res.item.url;
 
       //   const url = document.createElement("div");
       //   url.className = "search-result-url";
       //   url.innerHTML = res.item.url;
 
-      const text = document.createElement("div");
+      const text = document.createElement("a");
+      text.href = res.item.url;
       text.className = "search-result-text";
       let textHTML = "";
+      let titleHTML = "";
+
       const matches = res.matches;
       matches.forEach((match) => {
         match.indices.forEach((index) => {
@@ -112,11 +119,14 @@ function search(str) {
               index[0] - maxCharacters - 2,
               index[0] - maxCharacters - 1
             ).length > 0
-          )
+          ) {
             result += "...";
+          }
 
           result +=
-            match.value.substring(index[0] - maxCharacters, index[0]) +
+            match.value
+              .substring(index[0] - maxCharacters, index[0])
+              .replace("\n", "") +
             "<span class='search-result-keyword'>" +
             match.value.substring(index[0], index[1] + 1) +
             "</span>" +
@@ -131,11 +141,16 @@ function search(str) {
             result += "...";
           result += "<br/>";
 
-          textHTML += result.replace("\n", "<br><br>");
+          if (match.key === "title") {
+            titleHTML += result.replace("\n", "<br><br>");
+          } else {
+            textHTML += result.replace("\n", "<br><br>");
+          }
         });
       });
 
       text.innerHTML = textHTML;
+      if (titleHTML !== "") title.innerHTML = titleHTML;
 
       el.appendChild(title);
       //   el.appendChild(url);

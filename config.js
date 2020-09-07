@@ -1,3 +1,5 @@
+const { mirror } = require("jimp");
+
 exports.config = {
   /* Project Name and logo on the navbar. */
   PROJECT_NAME: "Docurry",
@@ -49,4 +51,14 @@ exports.config = {
 
   /* Whether to strip .html extension in generated links (sidebar) (eg: /en/docs/tutorial.html => /en/docs/tutorial ) */
   REMOVE_EXTENSION_FROM_LINKS: false,
+
+  /* After build, remove any class that is not being used. Be careful with classes that inject at runtime.  
+  You can add \/\* purgecss ignore \/\* directly on the class definition on your css or whitelist it below
+  */
+  PURGE_CSS: {
+    purge: true,
+    whitelist: null,
+    whitelistPatterns: null,
+    whitelistPatternsChildren: null,
+  },
 };

@@ -20,7 +20,13 @@ exports.makeSearch = function () {
       })
     );
 
-    const options = { keys: ["plainTextContent", "title", "url"] };
+    const options = {
+      keys: [
+        { name: "plainTextContent", weight: 1 },
+        { name: "title", weight: 12 },
+        { name: "url", weight: 0.5 },
+      ],
+    };
     const index = Fuse.createIndex(options.keys, docs);
 
     // const index = elasticlunr();
