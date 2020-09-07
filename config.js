@@ -24,8 +24,23 @@ exports.config = {
   */
 
   LANGUAGES: [
-    { id: "en", caption: "English", iso: "gb" },
-    { id: "es", caption: "Español", iso: "es" },
+    {
+      id: "en",
+      caption: "English",
+      iso: "gb",
+      translations: {
+        no_search_result: "No results found, try a different query.",
+      },
+    },
+    {
+      id: "es",
+      caption: "Español",
+      iso: "es",
+      translations: {
+        no_search_result:
+          "No se han encontrado resultados. Pruebe otra búsqueda",
+      },
+    },
   ],
 
   /* Include a language selector on landing page and docs */

@@ -4,7 +4,7 @@ A spicy, zero-config documentation site generator.
 
 ## Features
 
-> Warning: This project is WIP and contains undocumented and untested features
+> Warning: This project is alpha and may contain undocumented and untested features
 
 - [x] Write content in pure markdown.
 - [x] Plain HTML output. Static. No routers. No frameworks.
@@ -12,7 +12,7 @@ A spicy, zero-config documentation site generator.
 - [x] Multi-language support
 - [x] SEO Friendly
 - [x] Mobile Friendly
-- [ ] Auto generate search
+- [x] Auto generate search
 - [x] Auto generate landing page.
 - [ ] Live Reload (WIP)
 - [x] Zero Config.

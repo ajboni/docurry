@@ -3,6 +3,7 @@ var lang = null;
 var searchIndex = null;
 var searchDatabase = null;
 var fuse = null;
+var noSearchResultText = "No Results.";
 
 /* Hide popup */
 var container = document.getElementById("docs-search-dropdown-menu");
@@ -15,6 +16,7 @@ document.onclick = function (e) {
 
 window.onload = async function () {
   lang = curScriptElement.dataset.lang;
+  noSearchResultText = curScriptElement.dataset.no_search_result;
   await loadSearchIndex();
   await loadSearchDatabase();
   const searchInput = window.document.getElementById("docs-search-input");
@@ -61,6 +63,12 @@ async function loadSearchDatabase() {
       { name: "title", weight: 2 },
       { name: "url", weight: 0.5 },
     ],
+    sortFn: function (a, b) {
+      if (b.matches[0].indices.length > a.matches[0].indices.length) {
+        return 1;
+      }
+      return 0;
+    },
   };
   const fuseIndex = Fuse.parseIndex(searchIndex);
   fuse = new Fuse(searchDatabase, fuseOptions, fuseIndex);
@@ -85,7 +93,12 @@ function search(str) {
   if (!results.length) {
     const el = document.createElement("div");
 
-    el.innerHTML = "<p>No results</p>";
+    el.className = "search-result";
+    const text = document.createElement("div");
+    text.className = "search-result-text";
+    text.innerHTML = `${noSearchResultText}`;
+    el.appendChild(text);
+
     dropdown.appendChild(el);
   } else {
     results.forEach((res) => {
@@ -98,10 +111,6 @@ function search(str) {
       title.innerHTML = `${res.item.title}`;
       title.href = res.item.url;
 
-      //   const url = document.createElement("div");
-      //   url.className = "search-result-url";
-      //   url.innerHTML = res.item.url;
-
       const text = document.createElement("a");
       text.href = res.item.url;
       text.className = "search-result-text";
@@ -110,47 +119,26 @@ function search(str) {
 
       const matches = res.matches;
       matches.forEach((match) => {
+        const maxCharacters = 100;
+        const startIndex = match.indices[0][0] - maxCharacters;
+        const endIndex =
+          match.indices[match.indices.length - 1][1] + maxCharacters;
+        let result = match.value.substring(startIndex, endIndex);
+
         match.indices.forEach((index) => {
-          const maxCharacters = 100;
-          let result = "";
-
-          if (
-            match.value.substring(
-              index[0] - maxCharacters - 2,
-              index[0] - maxCharacters - 1
-            ).length > 0
-          ) {
-            result += "...";
-          }
-
-          result +=
-            match.value
-              .substring(index[0] - maxCharacters, index[0])
-              .replace("\n", "") +
-            "<span class='search-result-keyword'>" +
-            match.value.substring(index[0], index[1] + 1) +
-            "</span>" +
-            match.value.substring(index[1] + 1, index[1] + maxCharacters);
-
-          if (
-            match.value.substring(
-              index[0] + maxCharacters + 1,
-              index[0] + maxCharacters + 2
-            ).length > 0
-          )
-            result += "...";
-          result += "<br/>";
-
-          if (match.key === "title") {
-            titleHTML += result.replace("\n", "<br><br>");
-          } else {
-            textHTML += result.replace("\n", "<br><br>");
-          }
+          const keyword = match.value.substring(index[0], index[1] + 1);
+          result = result.replaceAll(
+            keyword,
+            `<span class='search-result-keyword'>${keyword}</span>`
+          );
         });
-      });
 
-      text.innerHTML = textHTML;
-      if (titleHTML !== "") title.innerHTML = titleHTML;
+        if (match.key === "title") {
+          title.innerHTML = result;
+        } else {
+          text.innerHTML = result;
+        }
+      });
 
       el.appendChild(title);
       //   el.appendChild(url);
@@ -158,7 +146,6 @@ function search(str) {
       dropdown.appendChild(el);
     });
   }
-
   dropdown.style.display = "block";
 
   console.log(results);

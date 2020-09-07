@@ -48,7 +48,11 @@
 
     {{#ENABLE_SEARCH}}
     <script src="/js/fuse/fuse.min.js"></script>
-    <script src="/js/docs-search.js" data-lang="{{LANG.id}}"></script>
+    <script
+      src="/js/docs-search.js"
+      data-lang="{{LANG.id}}"
+      data-no_search_result="{{LANG.translations.no_search_result}}"
+    ></script>
     {{/ENABLE_SEARCH}}
   </body>
 </html>
