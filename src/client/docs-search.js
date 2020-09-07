@@ -114,8 +114,6 @@ function search(str) {
       const text = document.createElement("a");
       text.href = res.item.url;
       text.className = "search-result-text";
-      let textHTML = "";
-      let titleHTML = "";
 
       const matches = res.matches;
       matches.forEach((match) => {
@@ -141,17 +139,16 @@ function search(str) {
       });
 
       el.appendChild(title);
-      //   el.appendChild(url);
       el.appendChild(text);
       dropdown.appendChild(el);
     });
   }
-  dropdown.style.display = "block";
 
-  console.log(results);
+  dropdown.style.display = "block";
   return results;
 }
 
+/* Delay execution of function */
 function delay(fn, ms) {
   let timer = 0;
   return function (...args) {

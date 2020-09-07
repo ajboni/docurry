@@ -36,10 +36,10 @@ exports.initBuildFolder = function () {
     path.join(config.BUILD_FOLDER, "css", "flags")
   );
 
-  /* Copy elasticlunr.js for Searches */
+  /* Copy fuse.js for Searches */
   copySync(
-    path.join("node_modules", "elasticlunr", "elasticlunr.min.js"),
-    path.join(config.BUILD_FOLDER, "js", "elasticlunr", "elasticlunr.min.js")
+    path.join("node_modules", "fuse.js", "dist", "fuse.min.js"),
+    path.join(config.BUILD_FOLDER, "js", "fuse", "fuse.min.js")
   );
 
   /* Copy templates js */
