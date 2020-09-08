@@ -5,4 +5,30 @@
     <small class="label label-secondary text-bold">DOCS</small></a
   >
 </div>
+{{#ENABLE_SEARCH}}
+<div class="docs-search-container">
+  <input
+    id="docs-search-input"
+    class="docs-search form-input ds-input"
+    type="text"
+    placeholder="Search Docs"
+    autocomplete="off"
+    spellcheck="false"
+    role="combobox"
+    aria-autocomplete="list"
+    aria-expanded="false"
+    aria-label="search input"
+    style="position: relative; vertical-align: top"
+    dir="auto"
+  />
+
+  <span
+    id="docs-search-dropdown-menu"
+    class="docs-search-dropdown-menu"
+    role="listbox"
+  >
+    <div class="ds-dataset-1"></div>
+  </span>
+</div>
+{{/ENABLE_SEARCH}}
 <div class="docs-nav">{{#SIDEBAR}} {{>item}} {{/SIDEBAR}}</div>

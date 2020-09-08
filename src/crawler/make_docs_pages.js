@@ -234,7 +234,7 @@ function addDocumentToSidebar(document, sidebar) {
     isFolder: false,
     checked: "", // This is needed because mustache will use parent context if the key is not found.
     isSelected: false, // Same as above.
-    target: document.target,
+    target: document.target, // ^
   };
 
   const parentObj = findParentDeep(sidebar, parent);

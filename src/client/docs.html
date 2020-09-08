@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
   </head>
   <body>
-    <div class="docs-container off-canvas off-canvas-sidebar-show">
-      <div class="docs-navbar" id="navbar-container">
-        <!-- Navbar content will be appended here HERE (id='navbar') -->
-      </div>
+    <div class="docs-navbar" id="navbar-container">
+      <!-- Navbar content will be appended here HERE (id='navbar') -->
+    </div>
 
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
       <div class="docs-sidebar off-canvas-sidebar" id="sidebar-container">
         <!-- Docs content will be appended here HERE (id='sidebar') -->
       </div>
@@ -32,12 +32,14 @@
 
           {{#ADD_TOC}}
           <nav class="docs-toc" id="toc-container">
+            <div class="docs-toc-title">
+              {{LANG.translations.table_of_contents}}
+            </div>
             <!-- Docs Toc HERE (id='content') -->
-            <ul>
-              <li>Lorem, ipsum dolor.</li>
-              <li>1Lorem, ipsum dolor2 1 231</li>
-              <li>Lorem, ipsum dolor231</li>
-            </ul>
+            {{#TOC}}
+            <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
+
+            {{/TOC}}
           </nav>
           {{/ADD_TOC}}
         </div>

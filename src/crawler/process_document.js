@@ -109,6 +109,7 @@ exports.processDocument = function (
     ...document.data,
     LANG: lang,
     ROOT: `${lang.id}/docs/`,
+    TOC: makeTableOfContents(document),
   };
 
   if (!document.data.title) document.data.title = fallbackTitle;
@@ -168,3 +169,19 @@ exports.processDocument = function (
 
   return document;
 };
+
+function makeTableOfContents(document) {
+  var dom = new JSDOM(document.html);
+  const tags = Array.from(
+    dom.window.document.querySelectorAll("a.header-anchor")
+  );
+  let result = [];
+  tags.forEach((tag) => {
+    result.push({
+      hash: tag.hash,
+      content: tag.previousSibling.data,
+      tag: tag.parentElement.tagName.toLowerCase(),
+    });
+  });
+  return result;
+}
