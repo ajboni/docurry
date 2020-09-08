@@ -26,18 +26,38 @@ ol {
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
 
 body {
+  min-height: 100vh;
+}
+
+header {
+  flex: 0 64px;
   display: flex;
 }
 
-.off-canvas {
-  height: unset;
+body,
+.docs-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  max-height: 100vh;
+}
+.docs-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  padding-top: 3.5rem;
+}
+
+.docs-content {
+  flex: 1 1 auto;
+}
+
+.docs-sidebar {
+  padding: 0rem;
 }
 
 .off-canvas .off-canvas-toggle {
   font-size: 1rem;
-  left: 1.5rem;
-  position: fixed;
-  top: 1rem;
 }
 .off-canvas .off-canvas-sidebar {
   width: 12rem;
@@ -48,29 +68,33 @@ body {
 .off-canvas .off-canvas-content {
   padding: 0 !important;
 }
-.docs-container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-}
+
 .docs-navbar {
-  height: 3.8rem;
+  height: 3.5rem;
+  display: flex;
   position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 100;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  z-index: 990;
   background: rgb(251, 251, 251);
-  left: 0;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 4px 0px, rgba(0, 0, 0, 0.05) 0px 2px 8px 0px;
 }
 
 .docs-navbar .navbar-left {
-  background: red;
+  //   background: red;
+  width: 12rem;
+  display: flex;
 }
 
 .docs-navbar .navbar-right {
-  background: green;
+  //   background: green;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  justify-content: right;
 }
 
 .docs-navbar .btns {
@@ -99,9 +123,6 @@ body {
   //   top: 0.85rem;
 }
 
-.docs-search-container {
-  padding: 0 1rem;
-}
 .docs-brand .docs-logo {
   align-items: center;
   border-radius: 0.1rem;
@@ -136,7 +157,6 @@ body {
 }
 
 .docs-sidebar .docs-nav {
-  bottom: 0;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   padding: 0.5rem 1rem;
@@ -220,11 +240,14 @@ body {
   display: flex;
 }
 
+.docs-wrapper {
+  display: flex;
+  overflow: auto;
+}
 .docs-content {
   flex-grow: 1;
-  width: 50%;
-  margin-right: 4rem;
-  margin-left: 4rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
 }
 
 .docs-toc {
@@ -419,11 +442,12 @@ body {
 .docs-content .off-canvas {
   position: relative;
 }
-.docs-content .off-canvas .off-canvas-toggle {
+.docs-navbar .off-canvas-toggle {
   left: 0.4rem;
   position: absolute;
   top: 0.4rem;
   z-index: 1;
+  display: none;
 }
 
 .docs-footer {
@@ -514,10 +538,8 @@ body {
   .off-canvas .off-canvas-content {
     width: 100%;
   }
-  .docs-sidebar .docs-brand {
-    margin: 0.85rem 1.5rem;
-    padding: 0;
-    position: static;
+  .docs-brand {
+    display: none;
   }
   .docs-sidebar .docs-nav {
     margin-top: 1rem;
@@ -576,153 +598,6 @@ body {
 
   .docs-content img {
     max-width: 100%;
-  }
-}
-
-.searchbox {
-  box-sizing: border-box;
-  display: inline-block;
-  height: 32px !important;
-  position: relative;
-  visibility: visible !important;
-  white-space: nowrap;
-  width: 200px;
-}
-.searchbox .algolia-autocomplete {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-.searchbox__wrapper {
-  height: 100%;
-  position: relative;
-  width: 100%;
-  z-index: 999;
-}
-.searchbox__input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #fff !important;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: inset 0 0 0 1px #ccc;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 12px;
-  height: 100%;
-  padding: 0 26px 0 32px;
-  transition: box-shadow 0.4s ease, background 0.4s ease;
-  vertical-align: middle;
-  white-space: normal;
-  width: 100%;
-}
-.searchbox__input::-webkit-search-cancel-button,
-.searchbox__input::-webkit-search-decoration,
-.searchbox__input::-webkit-search-results-button,
-.searchbox__input::-webkit-search-results-decoration {
-  display: none;
-}
-.searchbox__input:hover {
-  box-shadow: inset 0 0 0 1px #b3b3b3;
-}
-.searchbox__input:active,
-.searchbox__input:focus {
-  background: #fff;
-  box-shadow: inset 0 0 0 1px #aaa;
-  outline: 0;
-}
-.searchbox__input:-ms-input-placeholder {
-  color: #aaa;
-}
-.searchbox__input::-ms-input-placeholder {
-  color: #aaa;
-}
-.searchbox__input::placeholder {
-  color: #aaa;
-}
-.searchbox__submit {
-  background-color: rgba(69, 142, 225, 0);
-  border: 0;
-  border-radius: 16px 0 0 16px;
-  font-size: inherit;
-  height: 100%;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: inherit;
-  text-align: center;
-  top: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  width: 32px;
-}
-.searchbox__submit:before {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  margin-right: -4px;
-  vertical-align: middle;
-}
-.searchbox__submit:active,
-.searchbox__submit:hover {
-  cursor: pointer;
-}
-.searchbox__submit:focus {
-  outline: 0;
-}
-.searchbox__submit svg {
-  fill: #6d7e96;
-  height: 14px;
-  vertical-align: middle;
-  width: 14px;
-}
-.searchbox__reset {
-  background: 0 0;
-  border: 0;
-  cursor: pointer;
-  display: block;
-  fill: rgba(0, 0, 0, 0.5);
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.searchbox__reset.hide {
-  display: none;
-}
-.searchbox__reset:focus {
-  outline: 0;
-}
-.searchbox__reset svg {
-  display: block;
-  height: 8px;
-  margin: 4px;
-  width: 8px;
-}
-.searchbox__input:valid ~ .searchbox__reset {
-  animation-duration: 0.15s;
-  animation-name: sbx-reset-in;
-  display: block;
-}
-@keyframes sbx-reset-in {
-  0% {
-    opacity: 0;
-    transform: translate3d(-20%, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -932,6 +807,10 @@ img.emoji {
 
 /*! purgecss start ignore */
 
+.docs-search-container {
+  padding: 0 0.5rem;
+}
+
 .docs-search-dropdown-menu a {
   all: unset;
   cursor: pointer;
@@ -1001,6 +880,10 @@ img.emoji {
 
   .docs-navbar .docs-search-dropdown-menu {
     min-width: calc(100vw - 2rem);
+  }
+
+  .docs-navbar .navbar-left {
+    display: none;
   }
 }
 @media (min-width: 1366px) {

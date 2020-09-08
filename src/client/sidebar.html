@@ -1,34 +1,30 @@
-<div class="docs-brand">
-  <a class="docs-logo" href="{{ROOT}}"
-    ><img src="/{{PROJECT_LOGO}}" alt="{{PROJECT_DESCRIPTION}}" />
-    <div class="project-name">{{PROJECT_NAME}}</div>
-    <small class="label label-secondary text-bold">DOCS</small></a
-  >
-</div>
-{{#ENABLE_SEARCH}}
-<div class="docs-search-container">
-  <input
-    id="docs-search-input"
-    class="docs-search form-input ds-input"
-    type="text"
-    placeholder="Search Docs"
-    autocomplete="off"
-    spellcheck="false"
-    role="combobox"
-    aria-autocomplete="list"
-    aria-expanded="false"
-    aria-label="search input"
-    style="position: relative; vertical-align: top"
-    dir="auto"
-  />
+<div class="docs-nav">
+  {{#ENABLE_SEARCH}}
+  <div class="docs-search-container">
+    <input
+      id="docs-search-input"
+      class="docs-search form-input ds-input"
+      type="text"
+      placeholder="Search Docs"
+      autocomplete="off"
+      spellcheck="false"
+      role="combobox"
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-label="search input"
+      style="position: relative; vertical-align: top"
+      dir="auto"
+    />
 
-  <span
-    id="docs-search-dropdown-menu"
-    class="docs-search-dropdown-menu"
-    role="listbox"
-  >
-    <div class="ds-dataset-1"></div>
-  </span>
+    <span
+      id="docs-search-dropdown-menu"
+      class="docs-search-dropdown-menu"
+      role="listbox"
+    >
+      <div class="ds-dataset-1"></div>
+    </span>
+  </div>
+  {{/ENABLE_SEARCH}}
+  <!-- Sidebar -->
+  {{#SIDEBAR}} {{>item}} {{/SIDEBAR}}
 </div>
-{{/ENABLE_SEARCH}}
-<div class="docs-nav">{{#SIDEBAR}} {{>item}} {{/SIDEBAR}}</div>

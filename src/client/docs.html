@@ -14,36 +14,35 @@
     <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
   </head>
   <body>
-    <div class="docs-navbar" id="navbar-container">
+    <header class="docs-navbar" id="navbar-container">
       <!-- Navbar content will be appended here HERE (id='navbar') -->
-    </div>
+    </header>
 
     <div class="docs-container off-canvas off-canvas-sidebar-show">
-      <div class="docs-sidebar off-canvas-sidebar" id="sidebar-container">
+      <nav class="docs-sidebar off-canvas-sidebar" id="sidebar-container">
         <!-- Docs content will be appended here HERE (id='sidebar') -->
-      </div>
-      <a class="off-canvas-overlay" href="#close"></a>
+      </nav>
 
-      <div class="off-canvas-content">
-        <div class="content-container" id="content-container">
-          <div class="docs-content" id="docs-content-container">
-            <!-- Docs content HERE (id='docs-content-container') -->
+      <div class="docs-wrapper">
+        <section class="docs-content" id="docs-content-container">
+          <!-- Docs content HERE (id='docs-content-container') -->
+        </section>
+
+        {{#ADD_TOC}}
+        <aside class="docs-toc" id="toc-container">
+          <div class="docs-toc-title">
+            {{LANG.translations.table_of_contents}}
           </div>
+          <!-- Docs Toc HERE (id='content') -->
+          {{#TOC}}
+          <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
 
-          {{#ADD_TOC}}
-          <nav class="docs-toc" id="toc-container">
-            <div class="docs-toc-title">
-              {{LANG.translations.table_of_contents}}
-            </div>
-            <!-- Docs Toc HERE (id='content') -->
-            {{#TOC}}
-            <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
-
-            {{/TOC}}
-          </nav>
-          {{/ADD_TOC}}
-        </div>
+          {{/TOC}}
+        </aside>
+        {{/ADD_TOC}}
       </div>
+
+      <a class="off-canvas-overlay" href="#close"></a>
     </div>
 
     {{#ENABLE_SEARCH}}

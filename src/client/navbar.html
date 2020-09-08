@@ -5,29 +5,36 @@
 >
   <i class="icon icon-menu"> </i>
 </a>
-<div class="btns d-flex">
+<div class="navbar-left">
+  <div class="docs-brand">
+    <a class="docs-logo" href="{{ROOT}}"
+      ><img src="/{{PROJECT_LOGO}}" alt="{{PROJECT_DESCRIPTION}}" />
+      <div class="project-name">{{PROJECT_NAME}}</div>
+      <small class="label label-secondary text-bold">DOCS</small></a
+    >
+  </div>
+</div>
+<nav class="navbar-right">
   {{#ADD_LANGUAGE_SELECTOR}}
-  <nav id="nav">
-    <div class="popover popover-left">
-      <button class="btn btn" aria-label="Translations">
-        <img
-          height="24"
-          width="20"
-          src="/img/icons/translate.svg"
-          alt="Translations"
-        />
-      </button>
-      <div class="popover-container">
-        <div class="language-selector">
-          {{#LANGUAGES}}
-          <a class="text-dark" href="/{{id}}/docs">
-            <span class="flag-icon flag-icon-{{iso}}"></span>{{caption}}
-          </a>
-          {{/LANGUAGES}}
-        </div>
+  <div class="popover popover-left">
+    <button class="btn btn" aria-label="Translations">
+      <img
+        height="24"
+        width="20"
+        src="/img/icons/translate.svg"
+        alt="Translations"
+      />
+    </button>
+    <div class="popover-container">
+      <div class="language-selector">
+        {{#LANGUAGES}}
+        <a class="text-dark" href="/{{id}}/docs">
+          <span class="flag-icon flag-icon-{{iso}}"></span>{{caption}}
+        </a>
+        {{/LANGUAGES}}
       </div>
     </div>
-  </nav>
+  </div>
   {{/ADD_LANGUAGE_SELECTOR}}
   <!--  -->
   {{#buttons}}
@@ -36,4 +43,4 @@
   <!--  -->
 
   <!--  -->
-</div>
+</nav>
