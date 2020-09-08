@@ -443,11 +443,10 @@ body,
   position: relative;
 }
 .docs-navbar .off-canvas-toggle {
-  left: 0.4rem;
-  position: absolute;
-  top: 0.4rem;
-  z-index: 1;
   display: none;
+  align-self: center;
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }
 
 .docs-footer {
@@ -532,8 +531,16 @@ body,
 }
 
 @media (max-width: 960px) {
-  .off-canvas .off-canvas-toggle {
+  .off-canvas .off-canvas-sidebar {
+    width: 12rem;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .docs-navbar .off-canvas-toggle {
     z-index: 300;
+    display: block;
   }
   .off-canvas .off-canvas-content {
     width: 100%;
@@ -552,7 +559,6 @@ body,
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background: rgb(251, 251, 251);
-    left: 3rem;
   }
   .content-container {
     min-width: auto;
