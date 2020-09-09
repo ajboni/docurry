@@ -10,15 +10,16 @@
 
 .off-canvas .off-canvas-sidebar {
   width: 15rem;
-  -webkit-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
-  -moz-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
-  box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  //   -webkit-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  //   -moz-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  //   box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.18), 0 2px 4px 0 rgba(0, 0, 0, 0.22);
   z-index: 98;
 }
 
 .docs-sidebar .docs-nav {
   -webkit-overflow-scrolling: touch;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 
 .docs-sidebar .docs-nav .icon {
@@ -106,7 +107,7 @@
 }
 
 @media (max-width: 600px) {
-  .docs-sidebar .docs-nav {
-    padding: 0.5rem 1rem;
-  }
+  //   .docs-sidebar .docs-nav {
+  //     padding: 0.5rem 1rem;
+  //   }
 }

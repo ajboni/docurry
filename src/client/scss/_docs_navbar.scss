@@ -3,7 +3,8 @@
   display: flex;
   position: fixed;
   z-index: 99;
-  background: rgb(251, 251, 251);
+  //   background: rgb(251, 251, 251);
+  background: $dark-color;
   justify-content: space-between;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px,
@@ -141,11 +142,6 @@
   .docs-navbar .off-canvas-toggle {
     z-index: 99;
     display: block;
-  }
-  .docs-navbar {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    background: rgb(251, 251, 251);
   }
 }
 

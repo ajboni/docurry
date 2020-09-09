@@ -63,22 +63,14 @@ body,
   padding: 0 !important;
 }
 
-.content-container {
-  padding: 0;
-  width: calc(100vw - 15rem);
-  margin-top: 4rem;
-  min-height: calc(100vh - 4rem);
-  display: flex;
-}
-
 .docs-wrapper {
   display: flex;
   overflow: auto;
+  flex-grow: 1;
 }
 .docs-content {
   flex-grow: 1;
-  padding-right: 4rem;
-  padding-left: 4rem;
+  padding: 2rem 4rem;
 }
 
 .docs-toc {
@@ -281,11 +273,6 @@ body,
 
 @media (max-width: 960px) {
   .off-canvas .off-canvas-content {
-    width: 100%;
-  }
-
-  .content-container {
-    min-width: auto;
     width: 100%;
   }
 

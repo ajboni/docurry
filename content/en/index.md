@@ -7,7 +7,7 @@ description: A Spicy, Zero-Config Documentation Site Generator.
 
 # Docurry
 
-> A spicy documentation site generator.
+> A Spicy, Zero-Config Documentation Site Generator.
 
 1. Simple and fast.
 2. Statically built HTML. No router.
