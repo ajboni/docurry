@@ -4,6 +4,7 @@ var searchIndex = null;
 var searchDatabase = null;
 var fuse = null;
 var noSearchResultText = "No Results.";
+let timeout = null;
 
 /* Hide popup */
 var container = document.getElementById("docs-search-dropdown-menu");
@@ -20,12 +21,32 @@ window.onload = async function () {
   await loadSearchIndex();
   await loadSearchDatabase();
   const searchInput = window.document.getElementById("docs-search-input");
-  searchInput.onkeyup = delay((e) => {
-    search(searchInput.value);
-  }, 750);
+
+  /* Event for searching */
+  searchInput.onkeyup = function (e) {
+    if (e.keyCode === 13) {
+      clearTimeout(timeout);
+      search(searchInput.value);
+    } else {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        search(searchInput.value);
+      }, 750);
+    }
+  };
 
   const searchDropdown = document.getElementById("docs-search-dropdown-menu");
   searchDropdown.onblur = () => (searchDropdown.style.display = "none");
+
+  document.getElementById("docs-search-input").focus();
+};
+
+/* Focus on the search input */
+window.onhashchange = function (e) {
+  console.log(e);
+  if (location.hash === "#sidebar-container") {
+    document.getElementById("docs-search-input").focus();
+  }
 };
 
 /* Loads the Search Database */
@@ -81,6 +102,7 @@ async function loadSearchDatabase() {
  * @param {*} str
  */
 function search(str) {
+  console.log(str);
   const dropdown = document.getElementById("docs-search-dropdown-menu");
   dropdown.innerHTML = "";
 
@@ -124,10 +146,15 @@ function search(str) {
       const matches = res.matches;
       matches.forEach((match) => {
         const maxCharacters = 100;
+        const maxResult = 450;
         const startIndex = match.indices[0][0] - maxCharacters;
         const endIndex =
           match.indices[match.indices.length - 1][1] + maxCharacters;
-        let result = match.value.substring(startIndex, endIndex);
+        let result = match.value
+          .substring(startIndex, endIndex)
+          .replace(/\n\s*\n/g, "\n\n")
+          .substring(0, maxResult)
+          .replaceAll("\n", "<br/>");
 
         match.indices.forEach((index) => {
           const keyword = match.value.substring(index[0], index[1] + 1);
@@ -153,13 +180,4 @@ function search(str) {
   dropdown.style.display = "block";
   console.log(results);
   return results;
-}
-
-/* Delay execution of function */
-function delay(fn, ms) {
-  let timer = 0;
-  return function (...args) {
-    clearTimeout(timer);
-    timer = setTimeout(fn.bind(this, ...args), ms || 0);
-  };
 }
