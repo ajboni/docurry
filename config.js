@@ -30,7 +30,7 @@ exports.config = {
       iso: "gb",
       translations: {
         no_search_result: "No results found, try a different query.",
-        table_of_contents: "Table of contents.",
+        table_of_contents: "Table of contents",
       },
     },
     {
@@ -40,7 +40,7 @@ exports.config = {
       translations: {
         no_search_result:
           "No se han encontrado resultados. Pruebe otra búsqueda",
-        table_of_contents: "Tabla de contenidos.",
+        table_of_contents: "Tabla de contenidos",
       },
     },
   ],
@@ -58,7 +58,7 @@ exports.config = {
   AUTO_GENERATE_SIDEBAR: true,
 
   /* Add Table Of contents widget on doc page.*/
-  ADD_TOC: false,
+  ADD_TOC: true,
 
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",

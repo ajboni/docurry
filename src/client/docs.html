@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/css/docs.css" />
     <link rel="preload" href="/css/flags-css/flag-icon.min.css" as="style" />
     <link rel="preload" href="/js/fuse/fuse.min.js" as="script" />
-
     <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css" />
   </head>
   <body>
@@ -53,5 +52,8 @@
       data-no_search_result="{{LANG.translations.no_search_result}}"
     ></script>
     {{/ENABLE_SEARCH}}
+    <script src="/js/docs-toc.js"></script>
+
+    {{#ADD_TOC}} {{/ADD_TOC}}
   </body>
 </html>

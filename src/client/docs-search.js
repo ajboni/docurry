@@ -1,5 +1,5 @@
 var curScriptElement = document.currentScript;
-var lang = null;
+var lang = curScriptElement.dataset.lang;
 var searchIndex = null;
 var searchDatabase = null;
 var fuse = null;
@@ -16,7 +16,7 @@ document.onclick = function (e) {
 };
 
 window.onload = async function () {
-  lang = curScriptElement.dataset.lang;
+  //   lang = curScriptElement.dataset.lang;
   noSearchResultText = curScriptElement.dataset.no_search_result;
   await loadSearchIndex();
   await loadSearchDatabase();
@@ -41,9 +41,8 @@ window.onload = async function () {
   document.getElementById("docs-search-input").focus();
 };
 
-/* Focus on the search input */
 window.onhashchange = function (e) {
-  console.log(e);
+  /* Focus on the search input */
   if (location.hash === "#sidebar-container") {
     document.getElementById("docs-search-input").focus();
   }

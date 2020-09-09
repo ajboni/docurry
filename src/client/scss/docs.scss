@@ -51,10 +51,6 @@ body,
   padding-top: 3.5rem;
 }
 
-.docs-content {
-  flex: 1 1 auto;
-}
-
 .off-canvas .off-canvas-toggle {
   font-size: 1rem;
 }
@@ -71,32 +67,37 @@ body,
 .docs-content {
   flex-grow: 1;
   padding: 2rem 4rem;
+  min-width: 16rem;
 }
 
 .docs-toc {
-  padding: 1rem;
-  max-width: 20%;
-  padding: 0.5rem;
-  position: sticky;
-  align-self: flex-start;
-  overflow-y: auto;
-  top: 90px;
-  //   min-height: calc(100vh - 6rem);
-  max-height: calc(100vh - 5rem);
-  border-left: 1px solid #e0e0e0;
-  font-size: 0.7rem;
   display: flex;
   flex-direction: column;
-  width: 30%;
+  min-width: 12rem;
+  padding: 1rem;
+  position: sticky;
+  top: 2.5rem;
+  align-self: flex-start;
+  border-left: 1px solid #e0e0e0;
+  font-size: 0.7rem;
 }
 
 .docs-toc a {
   margin-bottom: 0.2rem;
   color: #949494;
 }
+
+/*! purgecss start ignore */
+.docs-toc a.active {
+  color: #949494;
+  font-weight: bold;
+}
+/*! purgecss end ignore */
+
 .docs-toc-title {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
 
   //   font-weight: bold;
 }
@@ -123,6 +124,12 @@ body,
 .docs-toc a.toc-h6 {
   margin-left: 2.5rem;
   //   font-size: 85%;
+}
+
+/* purgecss ignore */
+.docs-content:last-child {
+  margin-bottom: 10rem;
+  background: #ff0000;
 }
 
 .docs-content img {

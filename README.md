@@ -14,7 +14,7 @@ A spicy, zero-config documentation site generator.
 - [x] Auto generate search
 - [x] Auto generate landing page and favicons.
 - [x] Auto generate sidebar.
-- [ ] Auto generate Table of contents.
+- [x] Auto generate Table of contents.
 - [ ] Live Reload (Work in progress)
 - [x] Zero Config.
 - [x] 🚀 Blazing fast! 🚀
