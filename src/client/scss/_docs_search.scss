@@ -1,0 +1,45 @@
+/* As searchbox styles get added at runtime we need to speify purgecss to not purge them. */
+
+/*! purgecss start ignore */
+
+.docs-search-container {
+  padding: 0 0.5rem;
+}
+
+.docs-search-dropdown-menu a {
+  all: unset;
+  cursor: pointer;
+}
+
+.docs-search-dropdown-menu .search-result {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2222;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.docs-search-dropdown-menu .search-result:hover {
+  color: $primary-color;
+  //   cursor: pointer;
+  //   background-color: lighten($color: $primary-color, $amount: 90);
+}
+
+.docs-search-dropdown-menu .search-result-title {
+  font-size: 0.64rem;
+  font-weight: bold;
+}
+
+.docs-search-dropdown-menu .search-result-url {
+}
+
+.docs-search-dropdown-menu .search-result-text {
+  font-size: 0.55rem;
+}
+
+.docs-search-dropdown-menu .search-result-keyword {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+/*! purgecss end ignore */

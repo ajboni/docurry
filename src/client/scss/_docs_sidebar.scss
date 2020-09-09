@@ -1,0 +1,112 @@
+.docs-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem;
+}
+
+.off-canvas .off-canvas-overlay {
+  background: rgba(4, 4, 4, 0.77);
+}
+
+.off-canvas .off-canvas-sidebar {
+  width: 15rem;
+  -webkit-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  z-index: 98;
+}
+
+.docs-sidebar .docs-nav {
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 1rem;
+}
+
+.docs-sidebar .docs-nav .icon {
+  height: 1.2em;
+  font-size: 0.8em;
+}
+
+.docs-sidebar .accordion {
+  margin-bottom: 0.75rem;
+}
+
+.docs-sidebar .accordion .accordion {
+  padding: 0.2rem 0;
+}
+
+/* Only first Titles */
+.docs-sidebar
+  .docs-nav
+  > .accordion-container
+  > .accordion
+  > input
+  ~ .accordion-header {
+  color: #455060;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.docs-sidebar .accordion input:checked ~ .accordion-header {
+  color: #505c6e;
+}
+
+.accordion .accordion-body {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.docs-sidebar .docs-nav > .menu-item {
+  margin: 0;
+  list-style-type: none;
+  padding: 0.8rem 1rem;
+  font-size: 0.7rem;
+}
+.accordion .accordion {
+  margin-bottom: 0;
+}
+
+.docs-sidebar .accordion .menu .menu-item {
+  font-size: 0.7rem;
+  padding-left: 3ch;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+.docs-sidebar .accordion .menu .menu-item > a,
+.docs-sidebar .docs-nav > .menu-item > a {
+  background: 0 0;
+  color: #66758c;
+  display: inline-block;
+  padding: 0.1rem 0.1rem;
+}
+
+.docs-sidebar .accordion-body input ~ .accordion-header {
+  background: 0 0;
+  color: #66758c;
+  display: inline-block;
+  font-size: 0.7rem;
+  padding-left: 5px;
+}
+
+@media (max-width: 960px) {
+  .off-canvas .off-canvas-sidebar {
+    z-index: 101;
+    width: 15rem;
+    -webkit-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+    box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.23);
+  }
+  .docs-sidebar .docs-nav {
+    margin-top: 1rem;
+    position: static;
+  }
+  .docs-sidebar .menu .menu-item a {
+    padding: 0.4rem 0.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .docs-sidebar .docs-nav {
+    padding: 0.5rem 1rem;
+  }
+}

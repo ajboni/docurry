@@ -10,6 +10,9 @@ Full list of variables can be found [here](https://github.com/picturepan2/spectr
 ## Adding styles
 
 Any `.scss` file you add in `src/client/scss` will be processed and copied into `BUILD_FOLDER/css`
+
+## Ignoring styles
+
 Any style that starts with underscore `_` will be ignored.
 
 ## Purging unused classes

@@ -1,18 +1,25 @@
-<a
-  class="off-canvas-toggle btn btn-link btn-action"
-  href="#sidebar-container"
-  aria-label="Toggle Sidebar"
->
-  <i class="icon icon-menu"> </i>
-</a>
 <div class="navbar-left">
+  <a
+    class="off-canvas-toggle btn btn-link btn-action"
+    href="#sidebar-container"
+    aria-label="Toggle Sidebar"
+  >
+    <i class="icon icon-menu"> </i>
+  </a>
+
   <div class="docs-brand">
-    <a class="docs-logo" href="{{ROOT}}"
+    <a class="docs-logo" href="/{{ROOT}}"
       ><img src="/{{PROJECT_LOGO}}" alt="{{PROJECT_DESCRIPTION}}" />
       <div class="project-name">{{PROJECT_NAME}}</div>
-      <small class="label label-secondary text-bold">DOCS</small></a
-    >
+      <small class="label label-secondary text-bold">DOCS</small>
+    </a>
   </div>
+</div>
+
+<div class="navbar-center">
+  <a class="docs-logo" href="{{ROOT}}">
+    <img src="/{{PROJECT_LOGO}}" alt="{{PROJECT_DESCRIPTION}}" />
+  </a>
 </div>
 <nav class="navbar-right">
   {{#ADD_LANGUAGE_SELECTOR}}

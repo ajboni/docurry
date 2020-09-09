@@ -57,6 +57,7 @@ async function loadSearchDatabase() {
     includeMatches: true,
     ignoreLocation: true,
     useExtendedSearch: true,
+    // minMatchCharLength: 3,
     // ignoreFieldNorm: true,
     keys: [
       { name: "plainTextContent", weight: 1 },
@@ -84,6 +85,11 @@ function search(str) {
   dropdown.innerHTML = "";
 
   if (str === "" || str === "") {
+    dropdown.style.display = "none";
+    return;
+  }
+
+  if (str.length <= 2) {
     dropdown.style.display = "none";
     return;
   }
@@ -134,7 +140,7 @@ function search(str) {
         if (match.key === "title") {
           title.innerHTML = result;
         } else {
-          text.innerHTML = result;
+          text.innerHTML += result;
         }
       });
 
@@ -145,6 +151,7 @@ function search(str) {
   }
 
   dropdown.style.display = "block";
+  console.log(results);
   return results;
 }
 
