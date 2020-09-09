@@ -20,3 +20,5 @@ A spicy, zero-config documentation site generator.
 - [x] 🚀 Blazing fast! 🚀
 
 Docurry is VERY inspired [Docsify](https://github.com/docsifyjs/) and EXTREMELY based on the [Spectre Doc Site](https://picturepan2.github.io/spectre/getting-started.html)
+
+Demo: https://docurry.aboni.dev
