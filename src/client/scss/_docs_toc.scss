@@ -1,0 +1,92 @@
+#toc-sidebar-container {
+  display: none;
+  left: unset;
+  right: 0;
+  transform: translateX(100%);
+}
+#toc-sidebar-container:target {
+  transform: translateX(0);
+}
+
+.docs-toc {
+  display: flex;
+  flex-direction: column;
+  min-width: 12rem;
+  padding: 1rem;
+  position: sticky;
+  top: 2.5rem;
+  align-self: flex-start;
+  border-left: 1px solid #e0e0e0;
+  font-size: 0.7rem;
+}
+
+.docs-toc a {
+  margin-bottom: 0.2rem;
+  color: #949494;
+}
+
+/*! purgecss start ignore */
+.docs-toc a.active {
+  color: #949494;
+  font-weight: bold;
+  text-decoration: none;
+}
+/*! purgecss end ignore */
+
+.docs-toc-title {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  //   font-weight: bold;
+}
+.docs-toc a.toc-h1 {
+  //
+  //   font-weight: bold;
+}
+.docs-toc a.toc-h2 {
+  margin-left: 0.5rem;
+  //   font-size: 100%;
+}
+.docs-toc a.toc-h3 {
+  margin-left: 1rem;
+  //   font-size: 90%;
+}
+.docs-toc a.toc-h4 {
+  margin-left: 1.5rem;
+  //   font-size: 90%;
+}
+.docs-toc a.toc-h5 {
+  margin-left: 2rem;
+  //   font-size: 85%;
+}
+.docs-toc a.toc-h6 {
+  margin-left: 2.5rem;
+  //   font-size: 85%;
+}
+
+#toc-toggle-button {
+  position: absolute;
+  right: 1rem;
+  display: none;
+}
+
+@media (max-width: 960px) {
+  #toc-sidebar-container {
+    display: block;
+  }
+
+  #toc-container {
+    display: none;
+  }
+  #toc-sidebar-container #toc-container {
+    display: flex;
+  }
+  #toc-toggle-button {
+    position: absolute;
+    right: 1rem;
+  }
+  #toc-toggle-button {
+    display: block;
+  }
+}

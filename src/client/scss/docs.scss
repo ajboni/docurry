@@ -9,6 +9,7 @@
 @import "_docs_navbar.scss";
 @import "_docs_search.scss";
 @import "_docs_sidebar.scss";
+@import "_docs_toc.scss";
 
 html {
   scroll-behavior: smooth;
@@ -66,79 +67,13 @@ body,
 }
 .docs-content {
   flex-grow: 1;
-  padding: 2rem 4rem;
+  padding: 2rem 4rem 1rem 2rem;
   min-width: 16rem;
   height: max-content;
 }
 
-#toc-sidebar-container {
-  display: none;
-  left: unset;
-  right: 0;
-  transform: translateX(100%);
-}
-#toc-sidebar-container:target {
-  transform: translateX(0);
-}
-
-.docs-toc {
-  display: flex;
-  flex-direction: column;
-  min-width: 12rem;
-  padding: 1rem;
-  position: sticky;
-  top: 2.5rem;
-  align-self: flex-start;
-  border-left: 1px solid #e0e0e0;
-  font-size: 0.7rem;
-}
-
-.docs-toc a {
-  margin-bottom: 0.2rem;
-  color: #949494;
-}
-
-/*! purgecss start ignore */
-.docs-toc a.active {
-  color: #949494;
-  font-weight: bold;
-}
-/*! purgecss end ignore */
-
-.docs-toc-title {
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-
-  //   font-weight: bold;
-}
-.docs-toc a.toc-h1 {
-  //
-  //   font-weight: bold;
-}
-.docs-toc a.toc-h2 {
-  margin-left: 0.5rem;
-  //   font-size: 100%;
-}
-.docs-toc a.toc-h3 {
-  margin-left: 1rem;
-  //   font-size: 90%;
-}
-.docs-toc a.toc-h4 {
-  margin-left: 1.5rem;
-  //   font-size: 90%;
-}
-.docs-toc a.toc-h5 {
-  margin-left: 2rem;
-  //   font-size: 85%;
-}
-.docs-toc a.toc-h6 {
-  margin-left: 2.5rem;
-  //   font-size: 85%;
-}
-
 .docs-content img {
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
   //   margin: 2rem auto;
   //   display: block;
@@ -235,40 +170,20 @@ body,
 .docs-footer {
   color: #bcc3ce;
   //   padding: 0.5rem;
-  margin: 4rem 0;
+  margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid #eef0f3;
 }
 .docs-footer a {
   color: #66758c;
 }
-#toc-toggle-button {
-  position: absolute;
-  right: 1rem;
-  display: none;
+.docs-footer p {
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 960px) {
   .off-canvas .off-canvas-content {
     width: 100%;
-  }
-
-  #toc-sidebar-container {
-    display: block;
-  }
-
-  #toc-container {
-    display: none;
-  }
-  #toc-sidebar-container #toc-container {
-    display: flex;
-  }
-  #toc-toggle-button {
-    position: absolute;
-    right: 1rem;
-  }
-  #toc-toggle-button {
-    display: block;
   }
 
   .docs-content {

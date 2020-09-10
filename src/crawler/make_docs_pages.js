@@ -21,8 +21,7 @@ const {
 const { parseExtraFiles } = require("./parse_extra_files");
 const { basename, dirname } = require("path");
 const { titleCase, replaceAll } = require("voca");
-const { url } = require("inspector");
-const { makeSearch } = require("./make_search");
+var pjson = require("../../package.json");
 
 async function makeDocPages() {
   logTitle("Generate Doc Pages");
@@ -114,7 +113,7 @@ async function makeDocPages() {
 
       /* Replace variables in template */
 
-      const variables = { ...config, ...document.data };
+      const variables = { ...config, ...document.data, VERSION: pjson.version };
       template = Mustache.render(template, variables);
 
       let dom = new JSDOM(template);

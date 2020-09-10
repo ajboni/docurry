@@ -60,6 +60,9 @@ exports.config = {
   /* Add Table Of contents widget on doc page.*/
   ADD_TOC: true,
 
+  /* Add Footer widget on doc page.*/
+  ADD_FOOTER: true,
+
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
 
