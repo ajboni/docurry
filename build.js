@@ -46,7 +46,6 @@ function setUpLiveReload() {
     chokidar
       .watch(path.join("src", "client"), { ignoreInitial: true })
       .on("all", (event, _path, details) => {
-        console.log(path.extname(_path));
         switch (path.extname(_path)) {
           case ".js":
             copyTemplatesJavascript();

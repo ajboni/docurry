@@ -152,6 +152,19 @@ async function makeDocPages() {
       );
       footerElement.innerHTML = footerTemplate;
 
+      /* Load and process TOC template */
+      let tocTemplate = fs.readFileSync(
+        path.join("src", "client", "table_of_contents.html"),
+        {
+          encoding: "utf-8",
+        }
+      );
+
+      tocVariables = { ...variables };
+      tocTemplate = Mustache.render(tocTemplate, tocVariables);
+      const tocElement = dom.window.document.getElementById("toc-container");
+      tocElement.outerHTML = tocTemplate;
+
       /* Set up metadata */
       dom.window.document.title = document.data.title;
       dom.window.document

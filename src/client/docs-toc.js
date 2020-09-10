@@ -2,8 +2,6 @@ const anchors = document.querySelectorAll("a.header-anchor");
 const tocLinks = document.querySelectorAll("#toc-container a");
 var docsWrapper = document.querySelector(".docs-wrapper");
 var contentContainer = document.querySelector(".docs-content");
-let activeElement = null;
-let previousElement = null;
 var remBase = parseInt(
   window.getComputedStyle(document.body).getPropertyValue("font-size"),
   10
@@ -11,7 +9,6 @@ var remBase = parseInt(
 
 docsWrapper.onscroll = function (ev) {
   // check if the anchor elements are visible
-  //   console.log(contentContainer.scrollTop);
 
   for (let index = 0; index < anchors.length; index++) {
     const el = anchors[index];
@@ -45,11 +42,6 @@ function highlightTOC(hash) {
       el.classList.add("active");
       return;
     }
-
-    // const el = [...tocLinks].filter((f) => f.hash === hash);
-    // if (el) {
-    //   el.classList.add("active");
-    // }
   }
 }
 

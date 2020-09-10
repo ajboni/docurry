@@ -1,0 +1,32 @@
+{{#ADD_TOC}}
+
+<!-- Toc Toggle Button -->
+<a
+  class="btn btn-link btn-action"
+  href="#toc-sidebar-container"
+  aria-label="Toggle Table of contents"
+  id="toc-toggle-button"
+>
+  <i class="icon icon-apps"> </i>
+</a>
+
+<!-- TOC Mobile -->
+<nav class="docs-toc-mobile off-canvas-sidebar" id="toc-sidebar-container">
+  <aside class="docs-toc" id="toc-mobile-container">
+    <div class="docs-toc-title">{{LANG.translations.table_of_contents}}</div>
+    {{#TOC}}
+    <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
+
+    {{/TOC}}
+  </aside>
+</nav>
+<a class="off-canvas-overlay" href="#close"></a>
+
+<!-- TOC Desktop -->
+<aside class="docs-toc" id="toc-container">
+  <div class="docs-toc-title">{{LANG.translations.table_of_contents}}</div>
+  {{#TOC}}
+  <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
+  {{/TOC}}
+</aside>
+{{/ADD_TOC}}

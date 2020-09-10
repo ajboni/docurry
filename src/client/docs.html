@@ -21,31 +21,20 @@
       <nav class="docs-sidebar off-canvas-sidebar" id="sidebar-container">
         <!-- Docs content will be appended here HERE (id='sidebar') -->
       </nav>
+      <a class="off-canvas-overlay" href="#close"></a>
 
       <div class="docs-wrapper">
-        <section class="docs-content" id="docs-content-container">
+        <article class="docs-content" id="docs-content-container">
           <!-- Docs content HERE (id='docs-content-container') -->
           <!-- Footer -->
           <footer class="docs-footer" id="footer-container">
             <!-- Footer content will be appended here HERE (id='footer-container') -->
           </footer>
-        </section>
+        </article>
 
-        {{#ADD_TOC}}
-        <aside class="docs-toc" id="toc-container">
-          <div class="docs-toc-title">
-            {{LANG.translations.table_of_contents}}
-          </div>
-          <!-- Docs Toc HERE (id='content') -->
-          {{#TOC}}
-          <a href="{{hash}}" class="toc-{{tag}}">{{content}}</a>
-
-          {{/TOC}}
-        </aside>
-        {{/ADD_TOC}}
+        <div class="" id="toc-container"></div>
+        <!-- Table of contents will be appended HERE -->
       </div>
-
-      <a class="off-canvas-overlay" href="#close"></a>
     </div>
 
     {{#ENABLE_SEARCH}}
@@ -57,7 +46,5 @@
     ></script>
     {{/ENABLE_SEARCH}}
     <script src="/js/docs-toc.js"></script>
-
-    {{#ADD_TOC}} {{/ADD_TOC}}
   </body>
 </html>
