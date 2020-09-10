@@ -31,7 +31,7 @@ async function makeDocPages() {
   const langs = config.LANGUAGES;
 
   langs.forEach((lang, index) => {
-    /* Load NavBar */
+    /* Load NavBar JSON*/
     const navbarJsonPath = path.join(
       config.CONTENT_FOLDER,
       lang.id,
@@ -119,7 +119,8 @@ async function makeDocPages() {
 
       let dom = new JSDOM(template);
       const el = dom.window.document.getElementById("docs-content-container");
-      el.innerHTML = document.html;
+
+      el.insertAdjacentHTML("afterbegin", document.html);
 
       /* Load and process Navbar template */
       let navBarTemplate = fs.readFileSync(
@@ -135,6 +136,21 @@ async function makeDocPages() {
         "navbar-container"
       );
       navbarElement.innerHTML = navBarTemplate;
+
+      /* Load and process Footer template */
+      let footerTemplate = fs.readFileSync(
+        path.join("src", "client", "footer.html"),
+        {
+          encoding: "utf-8",
+        }
+      );
+
+      footerVariables = { ...variables };
+      footerTemplate = Mustache.render(footerTemplate, footerVariables);
+      const footerElement = dom.window.document.getElementById(
+        "footer-container"
+      );
+      footerElement.innerHTML = footerTemplate;
 
       /* Set up metadata */
       dom.window.document.title = document.data.title;
