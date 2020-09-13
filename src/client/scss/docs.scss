@@ -181,6 +181,15 @@ body,
   margin-bottom: 0.5rem;
 }
 
+.docs-content .next-prev-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.docs-content .next-prev-container a {
+  color: #66758c;
+}
+
 @media (max-width: 960px) {
   .off-canvas .off-canvas-content {
     width: 100%;

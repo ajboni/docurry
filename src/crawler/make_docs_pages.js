@@ -43,7 +43,6 @@ var pjson = require("../../package.json");
 async function makeDocPages() {
   logTitle("Generate Doc Pages");
   const extraFiles = parseExtraFiles();
-
   const langs = config.LANGUAGES;
 
   langs.forEach((lang, index) => {
@@ -62,6 +61,7 @@ async function makeDocPages() {
     /* Generate Sidebar and search database*/
     let sidebar = [];
     let searchDatabase = [];
+    let docList = [];
 
     const sidebarTemplatePath = path.join(
       config.CONTENT_FOLDER,
@@ -90,7 +90,7 @@ async function makeDocPages() {
     const files = glob.sync(docsGlob, { ignore: ignoreGlob, nosort: true });
     files.sort();
 
-    files.forEach((file) => {
+    files.forEach((file, fileIndex) => {
       const type = fs.statSync(file).isFile()
         ? "File"
         : fs.statSync(file).isDirectory
@@ -139,45 +139,32 @@ async function makeDocPages() {
       el.insertAdjacentHTML("afterbegin", document.html);
 
       /* Load and process Navbar template */
-      let navBarTemplate = fs.readFileSync(
+      let navBarTemplate = loadAndProcessTemplate(
         path.join("src", "client", "navbar.html"),
-        {
-          encoding: "utf-8",
-        }
+        { ...variables, buttons: navBarButtons }
       );
-
-      navbarVariables = { ...variables, buttons: navBarButtons };
-      navBarTemplate = Mustache.render(navBarTemplate, navbarVariables);
       const navbarElement = dom.window.document.getElementById(
         "navbar-container"
       );
       navbarElement.innerHTML = navBarTemplate;
 
       /* Load and process Footer template */
-      let footerTemplate = fs.readFileSync(
+      let footerTemplate = loadAndProcessTemplate(
         path.join("src", "client", "footer.html"),
-        {
-          encoding: "utf-8",
-        }
+        { ...variables }
       );
 
-      footerVariables = { ...variables };
-      footerTemplate = Mustache.render(footerTemplate, footerVariables);
       const footerElement = dom.window.document.getElementById(
         "footer-container"
       );
       footerElement.innerHTML = footerTemplate;
 
       /* Load and process TOC template */
-      let tocTemplate = fs.readFileSync(
+      let tocTemplate = loadAndProcessTemplate(
         path.join("src", "client", "table_of_contents.html"),
-        {
-          encoding: "utf-8",
-        }
+        { ...variables }
       );
 
-      tocVariables = { ...variables };
-      tocTemplate = Mustache.render(tocTemplate, tocVariables);
       const tocElement = dom.window.document.getElementById("toc-container");
       tocElement.outerHTML = tocTemplate;
 
@@ -196,6 +183,18 @@ async function makeDocPages() {
         addDocumentToSearchDatabase(document, searchDatabase);
       }
 
+      /* Save inventory */
+      if (!document.external) {
+        if (
+          document.buildPath ===
+          path.join(config.BUILD_FOLDER, lang.id, "docs", "index.html")
+        ) {
+          docList.unshift(document);
+        } else {
+          docList.push(document);
+        }
+      }
+
       /* Finally write the file */
       fs.writeFileSync(targetPath, processedHTML, { encoding: "utf-8" });
     });
@@ -204,6 +203,13 @@ async function makeDocPages() {
     fs.outputFileSync(
       path.join(".temp", lang.id, "sidebar.json"),
       JSON.stringify(sidebar),
+      { encoding: "utf-8" }
+    );
+
+    /*  Write hashmap to target folder */
+    fs.outputFileSync(
+      path.join(".temp", lang.id, "doc_list.json"),
+      JSON.stringify(docList),
       { encoding: "utf-8" }
     );
 
@@ -320,4 +326,13 @@ function addDocumentToSearchDatabase(document, db) {
     plainTextContent,
   }))(document);
   db.push(obj);
+}
+
+function loadAndProcessTemplate(srcPath, variables) {
+  let template = fs.readFileSync(srcPath, {
+    encoding: "utf-8",
+  });
+  template = Mustache.render(template, variables);
+
+  return template;
 }

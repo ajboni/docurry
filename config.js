@@ -78,6 +78,9 @@ exports.config = {
   /* Add Footer widget on doc page.*/
   ADD_FOOTER: true,
 
+  /* Add 'NEXT' and 'PREVIOUS' buttons on each document.  */
+  ADD_NEXT_PREVIOUS_BUTTONS: true,
+
   /* If 'auto', autogenerate background options using trianglify (checkout the license) otherwise specify path for image */
   LANDING_PAGE_BG: "auto",
 

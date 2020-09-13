@@ -33,13 +33,17 @@ exports.makeSidebars = function () {
     const jsonPath = path.join(".temp", lang.id, "sidebar.json");
     const sidebarTemplate = path.join("src", "client", "sidebar.html");
     const sidebarPartial = path.join("src", "client", "sidebar_item.html");
+    const docListPath = path.join(".temp", lang.id, "doc_list.json");
 
     const sidebar = JSON.parse(readFileSync(jsonPath, { encoding: "utf-8" }));
+    const docList = JSON.parse(
+      readFileSync(docListPath, { encoding: "utf-8" })
+    );
 
     const pages = glob.sync(`${docsFolder}/**/*.html`);
 
     /* Read each file and inject parsed sidebar template*/
-    pages.forEach((page) => {
+    pages.forEach((page, index) => {
       const template = readFileSync(sidebarTemplate, { encoding: "utf-8" });
       const partial = readFileSync(sidebarPartial, { encoding: "utf-8" });
       const content = readFileSync(page, { encoding: "utf-8" });
@@ -65,6 +69,15 @@ exports.makeSidebars = function () {
         item: partial,
       });
       el.innerHTML = parsedSidebar;
+
+      /* Set Up Next - Previous buttons */
+
+      const nextPrevButtons = getNextPrevButtons(docList, relPath);
+      const nextPrevElement = dom.window.document.getElementById(
+        "next-prev-container"
+      );
+      nextPrevElement.appendChild(nextPrevButtons.prev);
+      nextPrevElement.appendChild(nextPrevButtons.next);
 
       writeFileSync(page, dom.serialize());
     });
@@ -108,4 +121,38 @@ function checkParent(sidebar, docPath) {
 
   parentObj.checked = "checked";
   if (parentObj.parent) checkParent(sidebar, parentObj.parent);
+}
+
+function getNextPrevButtons(docList, page) {
+  if (!config.ADD_NEXT_PREVIOUS_BUTTONS) return;
+  let previous = null;
+  let next = null;
+
+  for (let index = 0; index < docList.length; index++) {
+    const element = docList[index];
+    if (element.url === page) {
+      if (index > 0) previous = docList[index - 1];
+      if (index < docList.length - 1) next = docList[index + 1];
+      break;
+    }
+  }
+
+  const dom = new JSDOM();
+  const prevEl = dom.window.document.createElement("div");
+  prevEl.className = "prevBtn";
+  const nextEl = dom.window.document.createElement("div");
+  nextEl.className = "nextBtn";
+
+  if (previous)
+    prevEl.innerHTML = `<a class='btn-link btn-action' href='${previous.url}' aria-label='Previous document'> <i class='icon icon-back'> </i> Previous: ${previous.caption}</a>`;
+
+  if (next)
+    nextEl.innerHTML = `<a class='btn-link btn-action' href='${next.url}' aria-label='Previous document'>Next: ${next.caption} <i class='icon icon-forward'/></a>`;
+
+  const result = {
+    prev: prevEl,
+    next: nextEl,
+  };
+
+  return result;
 }
