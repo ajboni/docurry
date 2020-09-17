@@ -27,6 +27,10 @@ ol {
   list-style: decimal;
 }
 
+.btn-secondary {
+  background-color: $secondary-color;
+}
+
 /*! Spectre.css Docs | MIT License | github.com/picturepan2/spectre */
 
 body {
@@ -288,7 +292,7 @@ blockquote {
   border-left: 0.2rem solid darken($color: $warning-color, $amount: 35);
   background-color: $warning-color;
   border-radius: 0.1rem;
-  margin: 0%;
+  margin: 0 0 1.2rem 0;
 }
 
 code,
@@ -297,6 +301,11 @@ pre,
 samp {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 0.7rem;
+}
+
+iframe {
+  width: 100%;
+  margin-bottom: 1.2rem;
 }
 
 /* Table styles */
