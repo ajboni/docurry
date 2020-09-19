@@ -1,0 +1,1064 @@
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+--><!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation · Docurry</title>
+
+    <meta name="description" content="A spicy, zero-config documentation site generator.">
+    <link rel="stylesheet" href="/css/docs.css">
+    <link rel="preload" href="/css/flags-css/flag-icon.min.css" as="style">
+    <link rel="preload" href="/js/fuse/fuse.min.js" as="script">
+    <link rel="stylesheet" href="/css/flags-css/flag-icon.min.css">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48x48.png">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#fff">
+    <meta name="application-name" content="Docurry">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/favicons/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/favicons/apple-touch-icon-1024x1024.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Docurry">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-640x1136.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-750x1334.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-828x1792.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1125x2436.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1242x2208.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1242x2688.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1536x2048.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1668x2224.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1668x2388.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-2048x2732.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/favicons/apple-touch-startup-image-1620x2160.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-1136x640.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-1334x750.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-1792x828.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2436x1125.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2208x1242.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2688x1242.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2048x1536.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2224x1668.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2388x1668.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2732x2048.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="/favicons/apple-touch-startup-image-2160x1620.png">
+  
+  <!-- Google / Search Engine Tags -->
+  <meta itemprop="name" content="Installation · Docurry">
+  <meta itemprop="description" content="A spicy, zero-config documentation site generator.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://docurry.aboni.dev/en/docs/getting_started/installation.html">
+  <meta property="og:title" content="Installation · Docurry">
+  <meta property="og:description" content="A spicy, zero-config documentation site generator.">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://docurry.aboni.dev/en/docs/getting_started/installation.html">
+  <meta property="twitter:title" content="Installation · Docurry">
+  <meta property="twitter:description" content="A spicy, zero-config documentation site generator.">
+  </head>
+
+
+
+
+
+  <body>
+    <header class="docs-navbar" id="navbar-container"><!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="navbar-left">
+  <a class="off-canvas-toggle btn btn-link btn-action" href="#sidebar-container" aria-label="Toggle Sidebar">
+    <i class="icon icon-menu"> </i>
+  </a>
+
+  <div class="docs-brand">
+    <a class="docs-logo" href="/en/docs/"><img src="/img/logo.png" alt="A spicy, zero-config documentation site generator.">
+      <div class="project-name">Docurry</div>
+      <small class="label label-secondary text-bold">DOCS</small>
+    </a>
+  </div>
+</div>
+
+<div class="navbar-center">
+  <a class="docs-logo" href="en/docs/">
+    <img src="/img/logo.png" alt="A spicy, zero-config documentation site generator.">
+  </a>
+</div>
+<nav class="navbar-right">
+  <div class="popover popover-left">
+    <button class="btn btn" aria-label="Translations">
+      <img height="24" width="20" src="/img/icons/translate.svg" alt="Translations">
+    </button>
+    <div class="popover-container">
+      <div class="language-selector">
+        <a class="text-dark" href="/en/docs">
+          <span class="flag-icon flag-icon-gb"></span>English
+        </a>
+        <a class="text-dark" href="/es/docs">
+          <span class="flag-icon flag-icon-es"></span>Español
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <a class="btn btn-primary" href="https://github.com/ajboni/docurry" target="__blank">Github </a>
+  <!--  -->
+
+  <!--  -->
+</nav>
+</header>
+
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
+      <nav class="docs-sidebar off-canvas-sidebar" id="sidebar-container"><!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="docs-nav">
+  <div class="docs-search-container">
+    <input id="docs-search-input" class="docs-search form-input ds-input" type="text" placeholder="Search Docs" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" style="position: relative; vertical-align: top" dir="auto">
+
+    <span id="docs-search-dropdown-menu" class="docs-search-dropdown-menu" role="listbox">
+      <div class="ds-dataset-1"></div>
+    </span>
+  </div>
+  <!-- Sidebar -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="https://github.com/ajboni/docurry">
+     Source </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-about" type="checkbox" name="docs-accordion-about" hidden="">
+    <label class="accordion-header c-hand" for="accordion-about">
+      <i class="icon icon-arrow-right"></i>
+
+      About
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/about/introduction.html">
+     Introduction </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/about/what.html">
+     What </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/about/why.html">
+     Why </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/about/how.html">
+     How </a>
+</li>
+<!--  -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-getting_started" type="checkbox" name="docs-accordion-getting_started" hidden="" checked="">
+    <label class="accordion-header c-hand" for="accordion-getting_started">
+      <i class="icon icon-arrow-right"></i>
+
+      Getting Started
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/getting_started/installation.html">
+    <strong> Installation  </strong></a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/getting_started/folder_structure.html">
+     Folder Structure </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/getting_started/run.html">
+     Run </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/getting_started/build.html">
+     Build </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-deploy" type="checkbox" name="docs-accordion-deploy" hidden="">
+    <label class="accordion-header c-hand" for="accordion-deploy">
+      <i class="icon icon-arrow-right"></i>
+
+      Deploy
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/getting_started/deploy/github_pages.html">
+     Github Pages </a>
+</li>
+<!--  -->
+      </ul>
+    </div>
+  </div>
+</div>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-writing_docs" type="checkbox" name="docs-accordion-writing_docs" hidden="">
+    <label class="accordion-header c-hand" for="accordion-writing_docs">
+      <i class="icon icon-arrow-right"></i>
+
+      Writing Docs
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/writing_docs/file_names.html">
+     File Names </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/writing_docs/front_matter.html">
+     Front Matter </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/writing_docs/links.html">
+     Links </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/writing_docs/variables.html">
+     Variables </a>
+</li>
+<!--  -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-site_generation" type="checkbox" name="docs-accordion-site_generation" hidden="">
+    <label class="accordion-header c-hand" for="accordion-site_generation">
+      <i class="icon icon-arrow-right"></i>
+
+      Site Generation
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/settings.html">
+     Settings </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/landing_page.html">
+     Landing Page </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/favicons.html">
+     Favicons </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/styles.html">
+     Styles </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-templates" type="checkbox" name="docs-accordion-templates" hidden="">
+    <label class="accordion-header c-hand" for="accordion-templates">
+      <i class="icon icon-arrow-right"></i>
+
+      Templates
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/templates/templates_overview.html">
+     Templates Overview </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/templates/sidebar.html">
+     Sidebar </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/templates/navbar.html">
+     Navbar </a>
+</li>
+<!--  -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/site-wide_search.html">
+     Site Wide Search </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-nested" type="checkbox" name="docs-accordion-nested" hidden="">
+    <label class="accordion-header c-hand" for="accordion-nested">
+      <i class="icon icon-arrow-right"></i>
+
+      Nested
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/nested/objects.html">
+     Objects </a>
+</li>
+<!--  -->
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--  -->
+<div class="accordion-container">
+  <div class="accordion">
+    <input id="accordion-are" type="checkbox" name="docs-accordion-are" hidden="">
+    <label class="accordion-header c-hand" for="accordion-are">
+      <i class="icon icon-arrow-right"></i>
+
+      Are
+    </label>
+    <div class="accordion-body">
+      <ul class="menu menu-nav">
+<!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<li class="menu-item">
+  <a href="/en/docs/site_generation/nested/are/supported.html">
+     Supported </a>
+</li>
+<!--  -->
+      </ul>
+    </div>
+  </div>
+</div>
+      </ul>
+    </div>
+  </div>
+</div>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</nav>
+      <a class="off-canvas-overlay" href="#close"></a>
+
+      <div class="docs-wrapper">
+        <article class="docs-content" id="docs-content-container"><h1 id="installation">Installation <a class="header-anchor" href="#installation">¶</a></h1>
+<p>The installation process is really simple:</p>
+<ol>
+<li>Use the template <code>https://github.com/ajboni/docurry/generate</code> or just download the repo</li>
+<li>Install dependencies: <code>npm install</code></li>
+<li>Have a look at <code>config.js</code> and set up your project.</li>
+<li>Replace <code>content</code> folder considering the <a href="/en/docs/getting_started/folder_structure">folder structure</a> and <a href="/en/docs/file_names.html">naming rules</a></li>
+</ol>
+
+          <!-- Docs content HERE (id='docs-content-container') -->
+          <nav id="next-prev-container" class="next-prev-container">
+            <!-- Next Previous buttons here -->
+          <div class="prevBtn"><a class="btn-link btn-action" href="/en/docs/about/how.html" aria-label="Previous document"> <i class="icon icon-back"> </i> Previous: How</a></div><div class="nextBtn"><a class="btn-link btn-action" href="/en/docs/getting_started/folder_structure.html" aria-label="Previous document">Next: Folder Structure <i class="icon icon-forward"></i></a></div></nav>
+          <!-- Footer -->
+          <footer class="docs-footer" id="footer-container"><!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<p>
+  <a href="https://github.com/ajboni/docurry" target="_blank">GitHub</a> ·
+  <a href="https://www.paypal.me/rdbdlf" target="_blank">PayPal Donate</a>
+  · Version <span class="version">1.0.0</span>
+</p>
+
+<p>
+  Designed and built with <span class="text-error">🧉</span> by
+  <a href="https://aboni.dev" target="_blank">Alexis Boni</a>. Licensed under
+  the
+  <a href="https://github.com/ajboni/docurry/blob/master/LICENSE" target="_blank">GNU AGPLv3 License</a>.
+</p>
+</footer>
+        </article>
+
+        <!--
+ Copyright (C) 2020 Alexis Boni
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<!-- Toc Toggle Button -->
+<a class="btn btn-link btn-action" href="#toc-sidebar-container" aria-label="Toggle Table of contents" id="toc-toggle-button">
+  <i class="icon icon-apps"> </i>
+</a>
+
+<!-- TOC Mobile -->
+<nav class="docs-toc-mobile off-canvas-sidebar" id="toc-sidebar-container">
+  <aside class="docs-toc" id="toc-mobile-container">
+    <div class="docs-toc-title">Table of contents</div>
+    <a href="#installation" class="toc-h1">Installation </a>
+
+  </aside>
+</nav>
+<a class="off-canvas-overlay" href="#close"></a>
+
+<!-- TOC Desktop -->
+<aside class="docs-toc" id="toc-container">
+  <div class="docs-toc-title">Table of contents</div>
+  <a href="#installation" class="toc-h1">Installation </a>
+</aside>
+
+        <!-- Table of contents will be appended HERE -->
+      </div>
+    </div>
+
+      <script src="/js/fuse/fuse.min.js"></script>
+      <script src="/js/docs-search.js" data-lang="en" data-no_search_result="No results found, try a different query."></script>
+    <script src="/js/docs-toc.js"></script>
+
+
+  
+
+</body></html>
