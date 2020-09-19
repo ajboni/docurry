@@ -6,6 +6,7 @@ Any file that contains a YAML front matter block will be processed by Docurry as
 ---
 title: My Awesome Site
 description: Some not generic description.
+img: An optional img for SEO
 caption: Sidebar friendly name
 url: http://override_url
 external: true
@@ -16,5 +17,6 @@ Between these triple-dashed lines, you can set predefined variables (see below f
 
 - `title` and `description` tags will be added to the HTML as meta tags, they are useful for SEO purposes.
 - `caption` Will be used for the sidebar. If no caption tag is set, docurry will auto generate one with the file name.
+- `img` If set, will be used on Facebook adn Twitter meta tags if `PROJECT_URL` setting is set. Very useful for SEO.
 - `url` If set, the url on the sidebar and search, will link to it.
 - `external` If `true` will open link in a new tab and it will add `rel="noopener noreferrer"` to the `<a>` tag

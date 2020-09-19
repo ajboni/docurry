@@ -3,6 +3,9 @@ exports.config = {
   PROJECT_NAME: "Docurry",
   PROJECT_DESCRIPTION: "A spicy, zero-config documentation site generator.",
 
+  /* Only used for Facebook and Twitter meta tags. Set it to null to ignore */
+  PROJECT_URL: "https://docurry.aboni.dev",
+
   /* Folder where src docs are located. */
   CONTENT_FOLDER: "./content",
 

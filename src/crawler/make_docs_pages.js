@@ -39,6 +39,7 @@ const { parseExtraFiles } = require("./parse_extra_files");
 const { basename, dirname } = require("path");
 const { titleCase, replaceAll } = require("voca");
 var pjson = require("../../package.json");
+const url = require("url");
 
 async function makeDocPages() {
   logTitle("Generate Doc Pages");
@@ -173,6 +174,16 @@ async function makeDocPages() {
       dom.window.document
         .querySelector('meta[name="description"]')
         .setAttribute("content", document.data.description);
+
+      const meta = generateMetaTags(
+        document.data.title,
+        document.data.description,
+        document.data.img,
+        document.url
+      );
+
+      dom.window.document.head.insertAdjacentHTML("beforeend", meta);
+
       const processedHTML = dom.serialize();
 
       /* Add Doc to sidebar */
@@ -335,4 +346,56 @@ function loadAndProcessTemplate(srcPath, variables) {
   template = Mustache.render(template, variables);
 
   return template;
+}
+
+/**
+ * Generates Meta tags for google, facebook and twitter
+ *
+ * @param {*} title
+ * @param {*} description
+ * @param {*} img
+ * @param {*} docUrl
+ * @returns
+ */
+function generateMetaTags(title, description, img, docUrl) {
+  let html = "";
+  const imgPath = img ? url.resolve(config.PROJECT_URL, img) : "";
+
+  html += `
+  <!-- Google / Search Engine Tags -->
+  <meta itemprop="name" content="${title}">
+  <meta itemprop="description" content="${description}">
+  `;
+
+  if (img) {
+    html += `<meta itemprop="image" content="${imgPath}">`;
+  }
+
+  if (config.PROJECT_URL) {
+    const targetUrl = url.resolve(config.PROJECT_URL, docUrl);
+    html += `
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${targetUrl}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  `;
+    if (img) {
+      html += `
+		<meta property="og:image" content="${imgPath}">
+		`;
+    }
+
+    html += `
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="${targetUrl}">
+  <meta property="twitter:title" content="${title}">
+  <meta property="twitter:description" content="${description}">
+  `;
+    if (img) {
+      html += `<meta property="twitter:image" content="${imgPath}">`;
+    }
+  }
+  return html;
 }
